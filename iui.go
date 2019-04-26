@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/xml"
 	"fmt"
 	"github.com/lucasb-eyer/go-colorful"
 )
@@ -18,6 +19,24 @@ func darken(col *colorful.Color, factor float64) string {
 func hasDarkBG(col *colorful.Color) bool {
 	l, _, _ := col.Lab()
 	return l < 0.5
+}
+
+type ThemeData struct {
+	MainFG string `xml:scheme`
+}
+
+type ThemeAttributes struct {
+	Attributes []ThemeAttribute `xml:attributes`
+}
+
+type ThemeAttribute struct {
+	XMLName xml.Name  `xml:option`
+	AV      AttrValue `xml:value`
+}
+
+type AttrValue struct {
+	Name  string `xml:name,attr`
+	Value string `xml:value,attr`
 }
 
 func main() {
