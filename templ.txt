@@ -10,12 +10,12 @@
       "disabledBackground": "{{.bg2}}",
       "acceleratorForeground": "{{.fg1}}",
       "acceleratorSelectionForeground": "{{.fg1}}",
-      "errorForeground": "#ff1276",
-      "borderColor": "#bab3ab",
+      "errorForeground": "{{.warning}}",
+      "borderColor": "{{.bg4}}",
       "disabledBorderColor": "{{.bg2}}",
       "focusColor": "#4a858c",
       "focusedBorderColor": "#4a858c",
-      "separatorColor": "#bab3ab"
+      "separatorColor": "{{.bg4}}"
     },
     "ActionButton": {
       "hoverBackground": "{{.bg2}}",
@@ -42,10 +42,10 @@
       "ContrastBorderColor": "#B3B3B3"
     },
     "ComboBox": {
-      "nonEditableBackground": "#bab3ab",
+      "nonEditableBackground": "{{.bg4}}",
       "ArrowButton": {
         "iconColor": "#656565",
-        "disabledIconColor": "#bab3ab",
+        "disabledIconColor": "{{.bg4}}",
         "nonEditableBackground": "{{.bg2}}"
       }
     },
@@ -66,7 +66,7 @@
       "background": "{{.fg1}}",
       "foreground": "#f7eee6"
     },
-    "DebuggerPopup.borderColor": "#bab3ab",
+    "DebuggerPopup.borderColor": "{{.bg4}}",
     "DebuggerTabs.selectedBackground": "#f7eee6",
     "DragAndDrop": {
       "areaForeground": "{{.fg1}}  ",
@@ -76,7 +76,7 @@
     "Editor": {
       "background": "{{.bg2}}",
       "foreground": "{{.fg1}}",
-      "shortcutForeground": "#bab3ab"
+      "shortcutForeground": "{{.bg4}}"
     },
     "EditorPane.inactiveBackground": "{{.bg1}}",
     "EditorTabs": {
