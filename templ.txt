@@ -1,39 +1,39 @@
 {
-  "name": "white-sand",
-  "dark": false,
-  "author": "Martin Haesler",
-  "editorScheme": "/white_sand.xml",
+  "name": "{{.themename}}",
+  "dark": {{.isDark}},
+  "author": "{{.author}}",
+  "editorScheme": "/{{themename}}.xml",
   "ui": {
     "*": {
-      "background": "#f5ebe1",
-      "inactiveBackground": "#e1d8cf",
-      "disabledBackground": "#e1d8cf",
-      "acceleratorForeground": "#656565",
-      "acceleratorSelectionForeground": "#656565",
+      "background": "{{.bg1}}",
+      "inactiveBackground": "{{.bg2}}",
+      "disabledBackground": "{{.bg2}}",
+      "acceleratorForeground": "{{.fg1}}",
+      "acceleratorSelectionForeground": "{{.fg1}}",
       "errorForeground": "#ff1276",
       "borderColor": "#bab3ab",
-      "disabledBorderColor": "#e1d8cf",
+      "disabledBorderColor": "{{.bg2}}",
       "focusColor": "#4a858c",
       "focusedBorderColor": "#4a858c",
       "separatorColor": "#bab3ab"
     },
     "ActionButton": {
-      "hoverBackground": "#e1d8cf",
-      "pressedBackground": "#f5ebe1",
+      "hoverBackground": "{{.bg2}}",
+      "pressedBackground": "{{.bg1}}",
       "hoverBorderColor": "#4a858c",
       "pressedBorderColor": "#4a858c"
     },
     "Button": {
-      "startBackground": "#e1d8cf",
-      "endBackground": "#e1d8cf",
+      "startBackground": "{{.bg2}}",
+      "endBackground": "{{.bg2}}",
       "startBorderColor": "#cec5bd",
       "endBorderColor": "#cec5bd",
       "default": {
-        "foreground": "#656565",
-        "startBackground": "#e1d8cf",
-        "endBackground": "#e1d8cf",
-        "startBorderColor": "#e1d8cf",
-        "endBorderColor": "#e1d8cf",
+        "foreground": "{{.fg1}}",
+        "startBackground": "{{.bg2}}",
+        "endBackground": "{{.bg2}}",
+        "startBorderColor": "{{.bg2}}",
+        "endBorderColor": "{{.bg2}}",
         "focusedBorderColor": "#f7eee6"
       }
     },
@@ -46,43 +46,43 @@
       "ArrowButton": {
         "iconColor": "#656565",
         "disabledIconColor": "#bab3ab",
-        "nonEditableBackground": "#e1d8cf"
+        "nonEditableBackground": "{{.bg2}}"
       }
     },
     "ComboPopup.border": "1,1,1,1,E6E6E6",
     "CompletionPopup": {
-      "matchForeground": "#e1d8cf",
-      "matchSelectionForeground": "#e1d8cf"
+      "matchForeground": "{{.bg2}}",
+      "matchSelectionForeground": "{{.bg2}}"
     },
     "Component": {
       "errorFocusColor": "#ffe1d7",
       "inactiveErrorFocusColor": "#ffd7e8",
       "warningFocusColor": "#ffe1d7",
       "inactiveWarningFocusColor": "#ffd7e8",
-      "iconColor": "#f5ebe1",
-      "hoverIconColor": "#f5ebe1"
+      "iconColor": "{{.bg1}}",
+      "hoverIconColor": "{{.bg1}}"
     },
     "Counter": {
-      "background": "#656565",
+      "background": "{{.fg1}}",
       "foreground": "#f7eee6"
     },
     "DebuggerPopup.borderColor": "#bab3ab",
     "DebuggerTabs.selectedBackground": "#f7eee6",
     "DragAndDrop": {
-      "areaForeground": "#656565  ",
+      "areaForeground": "{{.fg1}}  ",
       "areaBackground": "#f7eee6",
-      "areaBorderColor": "#f5ebe1"
+      "areaBorderColor": "{{.bg1}}"
     },
     "Editor": {
-      "background": "#e1d8cf",
-      "foreground": "#656565",
+      "background": "{{.bg2}}",
+      "foreground": "{{.fg1}}",
       "shortcutForeground": "#bab3ab"
     },
-    "EditorPane.inactiveBackground": "#f5ebe1",
+    "EditorPane.inactiveBackground": "{{.bg1}}",
     "EditorTabs": {
-      "selectedForeground": "#585858",
+      "selectedForeground": "{{.fg1}}",
       "selectedBackground": "#f7eee6",
-      "underlineColor": "#f5ebe1",
+      "underlineColor": "{{.bg1}}",
       "inactiveMaskColor": "#dad1c8"
     },
     "FileColor": {
