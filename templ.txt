@@ -83,15 +83,15 @@
       "selectedForeground": "{{.fg1}}",
       "selectedBackground": "{{.bg01}}",
       "underlineColor": "{{.bg1}}",
-      "inactiveMaskColor": "#dad1c8"
+      "inactiveMaskColor": "{{.bg2}}"
     },
     "FileColor": {
-      "Yellow": "#e5f0f1",
-      "Green": "#ddf6f9",
-      "Blue": "#f3e7e3",
-      "Violet": "#f1e5ee",
+      "Yellow": "{{.invbuiltin}}",
+      "Green": "{{.invkeyword}}",
+      "Blue": "{{.invtype}}",
+      "Violet": "{{.invfunc}}",
       "Orange": "{{.invwarning2}}",
-      "Rose": "#f3e4e3"
+      "Rose": "{{.invstring}}"
     }
   }
 }
