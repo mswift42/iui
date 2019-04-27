@@ -13,38 +13,38 @@
       "errorForeground": "{{.warning}}",
       "borderColor": "{{.bg4}}",
       "disabledBorderColor": "{{.bg2}}",
-      "focusColor": "#4a858c",
-      "focusedBorderColor": "#4a858c",
+      "focusColor": "{{.keyword}}",
+      "focusedBorderColor": "{{.keyword}}",
       "separatorColor": "{{.bg4}}"
     },
     "ActionButton": {
       "hoverBackground": "{{.bg2}}",
       "pressedBackground": "{{.bg1}}",
-      "hoverBorderColor": "#4a858c",
-      "pressedBorderColor": "#4a858c"
+      "hoverBorderColor": "{{.keyword}}",
+      "pressedBorderColor": "{{.keyword}}"
     },
     "Button": {
       "startBackground": "{{.bg2}}",
       "endBackground": "{{.bg2}}",
-      "startBorderColor": "#cec5bd",
-      "endBorderColor": "#cec5bd",
+      "startBorderColor": "{{.bg3}}",
+      "endBorderColor": "{{.bg3}}",
       "default": {
         "foreground": "{{.fg1}}",
         "startBackground": "{{.bg2}}",
         "endBackground": "{{.bg2}}",
         "startBorderColor": "{{.bg2}}",
         "endBorderColor": "{{.bg2}}",
-        "focusedBorderColor": "#f7eee6"
+        "focusedBorderColor": "{{.bg01}}"
       }
     },
     "Borders": {
-      "color": "#b3b3b3",
-      "ContrastBorderColor": "#B3B3B3"
+      "color": "{{.bg4}}",
+      "ContrastBorderColor": "{{.bg4}}"
     },
     "ComboBox": {
       "nonEditableBackground": "{{.bg4}}",
       "ArrowButton": {
-        "iconColor": "#656565",
+        "iconColor": "{{.fg1}}",
         "disabledIconColor": "{{.bg4}}",
         "nonEditableBackground": "{{.bg2}}"
       }
@@ -55,22 +55,22 @@
       "matchSelectionForeground": "{{.bg2}}"
     },
     "Component": {
-      "errorFocusColor": "#ffe1d7",
-      "inactiveErrorFocusColor": "#ffd7e8",
-      "warningFocusColor": "#ffe1d7",
-      "inactiveWarningFocusColor": "#ffd7e8",
+      "errorFocusColor": "{{.invwarning}}",
+      "inactiveErrorFocusColor": "{{.invwarning2}}",
+      "warningFocusColor": "{{.invwarning}}",
+      "inactiveWarningFocusColor": "{{.invwarning2}}",
       "iconColor": "{{.bg1}}",
       "hoverIconColor": "{{.bg1}}"
     },
     "Counter": {
       "background": "{{.fg1}}",
-      "foreground": "#f7eee6"
+      "foreground": "{{.bg01}}"
     },
     "DebuggerPopup.borderColor": "{{.bg4}}",
-    "DebuggerTabs.selectedBackground": "#f7eee6",
+    "DebuggerTabs.selectedBackground": "{{.bg01}}",
     "DragAndDrop": {
       "areaForeground": "{{.fg1}}  ",
-      "areaBackground": "#f7eee6",
+      "areaBackground": "{{.bg01}}",
       "areaBorderColor": "{{.bg1}}"
     },
     "Editor": {
@@ -81,7 +81,7 @@
     "EditorPane.inactiveBackground": "{{.bg1}}",
     "EditorTabs": {
       "selectedForeground": "{{.fg1}}",
-      "selectedBackground": "#f7eee6",
+      "selectedBackground": "{{.bg01}}",
       "underlineColor": "{{.bg1}}",
       "inactiveMaskColor": "#dad1c8"
     },
@@ -90,7 +90,7 @@
       "Green": "#ddf6f9",
       "Blue": "#f3e7e3",
       "Violet": "#f1e5ee",
-      "Orange": "#ffd7e8",
+      "Orange": "{{.invwarning2}}",
       "Rose": "#f3e4e3"
     }
   }
