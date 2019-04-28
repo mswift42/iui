@@ -91,6 +91,25 @@ func addColors(colors map[string]string) map[string]string {
 	return colors
 }
 
+var reykjavik = map[string]string{
+	"author":    "Martin Haesler",
+	"themename": "reykjavik",
+	"fg1":       "#b1b1b1",
+	"fg2":       "#a3a3a3",
+	"bg1":       "#112328",
+	"bg2":       "#243549",
+	"bg3":       "#37464a",
+	"bg4":       "#4a585c",
+	"builtin":   "#c4cbee",
+	"keyword":   "#a3d4e8",
+	"const":     "#a3d6cc",
+	"comment":   "#5d5d5d",
+	"func":      "#f1c1bd",
+	"string":    "#e6c2db",
+	"warning":   "#e81050",
+	"warning2":  "#e86310",
+}
+
 func main() {
 	c1, _ := colorful.Hex("#f5ebe1")
 	fmt.Println(lighten(&c1, 0.16))
