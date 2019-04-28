@@ -1,11 +1,8 @@
 package main
 
 import (
-	"encoding/xml"
 	"fmt"
 	"github.com/lucasb-eyer/go-colorful"
-	"io/ioutil"
-	"os"
 )
 
 func lighten(col *colorful.Color, factor float64) string {
@@ -32,35 +29,6 @@ func invertColor(bgcol, col *colorful.Color) string {
 func luminance(col *colorful.Color) float64 {
 	_, _, l := col.Hsl()
 	return l
-}
-
-type ThemeData struct {
-	MainFG  string `xml:"scheme""`
-	Attribs ThemeAttributes
-}
-
-type ThemeAttributes struct {
-	Attributes []ThemeAttributeOption `xml:"attributes"`
-}
-
-type ThemeAttributeOption struct {
-	option string    `xml:"option,attr"`
-	AV     AttrValue `xml:"value"`
-}
-
-type AttrValue struct {
-	Name  string `xml:"option>name,attr"`
-	Value string `xml:"option>value,attr"`
-}
-
-type TD struct {
-	Attributes []struct {
-		Optname    string `xml:"name,attr"`
-		FaceOption struct {
-			FaceVal  string `xml:"value,attr"`
-			FaceName string `xml:"name,attr"`
-		} `xml:"attributes>option>value"`
-	} `xml:"attributes>option"`
 }
 
 func addColors(colors map[string]string) map[string]string {
@@ -132,17 +100,4 @@ func main() {
 	fmt.Println(luminance(&c1))
 	fmt.Println("darken: ", darken(&c1, 0.1))
 	fmt.Println(hasDarkBG(&c1))
-	icls, err := os.Open("white-sand.icls")
-	if err != nil {
-		panic(err)
-	}
-	var theme ThemeAttributes
-	var td TD
-	bytes, err := ioutil.ReadAll(icls)
-	if err != nil {
-		panic(err)
-	}
-	xml.Unmarshal(bytes, &theme)
-	xml.Unmarshal(bytes, &td)
-	fmt.Println(theme)
 }
