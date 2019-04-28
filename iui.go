@@ -63,6 +63,34 @@ type TD struct {
 	} `xml:"attributes>option"`
 }
 
+func addColors(colors map[string]string) map[string]string {
+	bg, _ := colorful.Hex(colors["bg"])
+	var bg01 string
+	if hasDarkBG(&bg) {
+		bg01 = darken(&bg, 0.12)
+	} else {
+		bg01 = lighten(&bg, 0.1)
+	}
+	colors["bg01"] = bg01
+	builtin, _ := colorful.Hex(colors["builtin"])
+	keyw, _ := colorful.Hex(colors["keyword"])
+	typ, _ := colorful.Hex(colors["type"])
+	fnc, _ := colorful.Hex(colors["func"])
+	warn1, _ := colorful.Hex(colors["warning"])
+	warn2, _ := colorful.Hex(colors["warning2"])
+	str, _ := colorful.Hex(colors["string"])
+
+	colors["invbuiltin"] = invertColor(&bg, &builtin)
+	colors["invkeyword"] = invertColor(&bg, &keyw)
+	colors["invtype"] = invertColor(&bg, &typ)
+	colors["invfunc"] = invertColor(&bg, &fnc)
+	colors["invwarning"] = invertColor(&bg, &warn1)
+	colors["invwarning2"] = invertColor(&bg, &warn2)
+	colors["invstring"] = invertColor(&bg, &str)
+
+	return colors
+}
+
 func main() {
 	c1, _ := colorful.Hex("#f5ebe1")
 	fmt.Println(lighten(&c1, 0.16))
