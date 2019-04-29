@@ -92,6 +92,254 @@
       "Violet": "{{.invfunc}}",
       "Orange": "{{.invwarning2}}",
       "Rose": "{{.invstring}}"
+    },
+     "FlameGraph": {
+      "JVMBackground": "{{.fg2}}",
+      "JVMSearchNotMatchedBackground": "{{.bg4}}",
+      "nativeBackground": "{{.fg1}}",
+      "nativeSearchNotMatchedBackground": "{{.bg3}}",
+      "parentBackground": "{{.fg1}}",
+      "parentSearchNotMatchedBackground": "#757575",
+      "JVMFocusBackground": "{{.bg3}}",
+      "JVMFocusSearchNotMatchedBackground": "{{.bg3}}",
+      "nativeFocusBackground": "{{.bg3}}",
+      "nativeFocusSearchNotMatchedBackground": "{{.bg3}}",
+      "parentFocusBackground": "{{.bg3}}",
+      "parentFocusSearchNotMatchedBackground": "{{.bg3}}",
+      "JVMFrameForeground": "{{.bg1}}",
+      "nativeFrameForeground": "{{.bg1}}",
+      "parentFrameForeground": "{{.bg1}}",
+      "JVMFocusedFrameForeground": "{{.fg1}}",
+      "nativeFocusedFrameForeground": "{{.fg1}}",
+      "parentFocusedFrameForeground": "{{.fg1}}"
+    },
+    "InplaceRefactoringPopup": {
+      "background": "{{.bg2}}",
+      "borderColor": "{{.fg2}}"
+    },
+    "Label.selectedDisabledForeground": "#ff4d12",
+    "Link": {
+      "activeForeground": "{{.const}}",
+      "hoverForeground": "{{.const}}",
+      "pressedForeground": "{{.const}}",
+      "visitedForeground": "{{.const}}"
+    },
+    "NavBar.borderColor": "{{.fg1}}",
+    "Notification": {
+      "background": "{{.bg1}}",
+      "errorForeground": "{{.fg1}}",
+      "errorBackground": "{{.invwarning}}",
+      "errorBorderColor": "#ff1276",
+      "MoreButton.innerBorderColor": "{{.bg1}}",
+      "ToolWindow": {
+        "informativeForeground": "{{.fg1}}",
+        "informativeBackground": "{{.bg2}}",
+        "informativeBorderColor": "{{.fg2}}",
+        "warningForeground": "{{.fg1}}",
+        "warningBackground": "#ffe1d7",
+        "warningBorderColor": "#ff1276",
+        "errorForeground": "{{.fg1}}",
+        "errorBackground": "{{.invwarning}}",
+        "errorBorderColor": "#ff1276"
+      }
+    },
+    "ParameterInfo": {
+      "background": "{{.bg2}}",
+      "foreground": "{{.fg2}}",
+      "currentOverloadBackground": "{{.bg2}}",
+      "currentParameterForeground": "{{.fg1}}",
+      "lineSeparatorColor": "{{.bg4}}"
+    },
+    "Plugins": {
+      "Tab": {
+        "selectedForeground": "{{.fg1}}",
+        "selectedBackground": "{{.bg3}}",
+        "hoverBackground": "{{.bg3}}"
+      },
+      "SearchField.borderColor": "{{.fg1}}",
+      "SectionHeader.background": "{{.bg1}}",
+      "tagBackground": "{{.bg1}}",
+      "tagForeground": "{{.fg1}}",
+      "Button": {
+        "installForeground": "{{.fg1}}",
+        "installBorderColor": "{{.fg1}}",
+        "installFillForeground": "{{.bg1}}",
+        "installFillBackground": "{{.fg1}}",
+        "updateForeground": "{{.bg1}}",
+        "updateBackground": "{{.fg1}}"
+      },
+      "lightSelectionBackground": "{{.bg2}}"
+    },
+    "Popup": {
+      "paintBorder": true,
+      "inactiveBorderColor": "{{.fg2}}",
+      "Toolbar.borderColor": "{{.fg1}}",
+      "separatorForeground": "{{.fg1}}",
+      "Header.activeBackground": "{{.bg1}}",
+      "Header.inactiveBackground": "{{.bg1}}",
+      "Advertiser": {
+        "background": "{{.bg1}}",
+        "borderColor": "{{.bg1}}",
+        "borderInsets": "3,8,5,0"
+      }
+    },
+    "PopupMenu": {
+      "borderWidth": 1,
+      "borderInsets": "4,1,4,1"
+    },
+    "ProgressBar": {
+      "trackColor": "{{.bg4}}",
+      "progressColor": "{{.fg1}}",
+      "indeterminateStartColor": "{{.fg1}}",
+      "indeterminateEndColor": "{{.bg2}}",
+      "failedColor": "#ff1276",
+      "failedEndColor": "{{.invwarning}}",
+      "passedColor": "#4A8C50",
+      "passedEndColor": "#e5f0f1"
+    },
+    "ScrollBar": {
+      "Transparent": {
+        "thumbColor": "{{.fg1}}",
+        "thumbBorderColor": "{{.bg1}}C8",
+        "hoverThumbColor": "{{.fg2}}",
+        "hoverThumbBorderColor": "{{.bg1}}C8",
+        "hoverTrackColor": "{{.fg2}}5A"
+      },
+      "thumbColor": "{{.fg1}}",
+      "thumbBorderColor": "{{.bg1}}C8",
+      "hoverThumbColor": "{{.fg2}}",
+      "hoverThumbBorderColor": "{{.bg1}}C8",
+      "trackColor": "{{.bg1}}",
+      "Mac": {
+        "Transparent": {
+          "thumbColor": "{{.bg4}}",
+          "thumbBorderColor": "{{.bg1}}C8",
+          "hoverThumbColor": "{{.fg2}}",
+          "hoverThumbBorderColor": "{{.bg1}}C8",
+          "hoverTrackColor": "{{.fg2}}5A"
+        },
+        "thumbColor": "{{.bg4}}",
+        "thumbBorderColor": "{{.bg1}}C8",
+        "hoverThumbColor": "{{.fg2}}",
+        "hoverThumbBorderColor": "{{.bg1}}C8",
+        "trackColor": "{{.bg1}}",
+        "hoverTrackColor": "{{.bg1}}"
+      }
+    },
+    "SearchEverywhere": {
+      "Tab": {
+        "selectedForeground": "{{.fg1}}",
+        "selectedBackground": "{{.bg3}}"
+      },
+      "SearchField.borderColor": "{{.fg1}}",
+      "Advertiser": {
+        "background": "{{.bg1}}",
+        "borderInsets": "3,8,5,0"
+      }
+    },
+    "SearchMatch": {
+      "startBackground": "{{.fg2}}FF",
+      "endBackground": "{{.fg2}}FF"
+    },
+    "SpeedSearch": {
+      "foreground": "{{.bg1}}",
+      "borderColor": "{{.bg1}}",
+      "background": "{{.fg1}}"
+    },
+    "StatusBar.borderColor": "{{.fg1}}",
+    "TabbedPane": {
+      "underlineColor": "{{.fg1}}",
+      "disabledUnderlineColor": "{{.bg4}}",
+      "contentAreaColor": "{{.fg1}}"
+    },
+    "TableHeader.cellBorder": "8,0,8,0",
+    "Table": {
+      "stripeColor": "#e9f0e6",
+      "lightSelectionForeground": "{{.fg1}}",
+      "lightSelectionInactiveForeground": "{{.fg1}}",
+      "lightSelectionBackground": "{{.bg2}}",
+      "lightSelectionInactiveBackground": "#a9a9a9"
+    },
+    "ToggleButton": {
+      "onForeground": "{{.fg1}}",
+      "onBackground": "{{.bg1}}",
+      "offForeground": "{{.fg1}}",
+      "offBackground": "{{.bg1}}",
+      "buttonColor": "{{.fg1}}",
+      "borderColor": "{{.fg1}}"
+    },
+    "ToolTip": {
+      "background": "{{.bg2}}",
+      "Actions.background": "{{.bg2}}"
+    },
+    "ToolWindow": {
+      "Header": {
+        "background": "{{.bg2}}",
+        "inactiveBackground": "{{.bg2}}"
+      },
+      "HeaderTab": {
+        "selectedBackground": "#F1E5EEFF",
+        "selectedInactiveBackground": "{{.bg4}}FF",
+        "hoverBackground": "#F1E5EEFF",
+        "hoverInactiveBackground": "{{.bg4}}FF"
+      },
+      "Button": {
+        "hoverBackground": "{{.bg3}}",
+        "selectedBackground": "{{.bg3}}",
+        "selectedForeground": "{{.fg1}}"
+      }
+    },
+    "ValidationTooltip": {
+      "errorBackground": "{{.invwarning}}",
+      "errorBorderColor": "#ff1276",
+      "warningBackground": "#ffe1d7",
+      "warningBorderColor": "#ff1276"
+    },
+    "VersionControl": {
+      "Log.Commit": {
+        "currentBranchBackground": "#F3E4E3",
+        "unmatchedForeground": "#ff4d12"
+      },
+      "RefLabel": {
+        "backgroundBase": "{{.bg3}}",
+        "backgroundBrightness": 0.7
+      },
+      "FileHistory.Commit.selectedBranchBackground": "#F3E4E3"
+    },
+    "WelcomeScreen": {
+      "Projects.selectionInactiveBackground": "{{.bg3}}",
+      "separatorColor": "{{.fg2}}"
+    },
+    "Window.border": "1,1,1,1,E6E6E6"
+  },
+  "icons": {
+    "ColorPalette": {
+      "Actions.Grey": "{{.fg1}}",
+      "Actions.Red": "#FF3633",
+      "Actions.Yellow": "#8a8c4a",
+      "Actions.Green": "#4A8C50",
+      "Actions.Blue": "#4A688C",
+      "Actions.GreyInline.Dark": "{{.fg1}}FF",
+      "Objects.Grey": "{{.fg1}}FF",
+      "Objects.RedStatus": "#FF4340FF",
+      "Objects.Red": "#FF4340FF",
+      "Objects.Pink": "#FF8FA2FF",
+      "Objects.Yellow": "#8a8c4aFF",
+      "Objects.Green": "#4A8C50FF",
+      "Objects.Blue": "#4A688CFF",
+      "Objects.Purple": "#A880FFFF",
+      "Objects.BlackText": "{{.bg1}}FF",
+      "Objects.YellowDark": "{{.fg2}}FF",
+      "Objects.GreenAndroid": "#4A8C50FF",
+      "Checkbox.Background.Default.Dark": "{{.bg1}}",
+      "Checkbox.Border.Default.Dark": "{{.fg1}}",
+      "Checkbox.Foreground.Selected.Dark": "{{.fg1}}",
+      "Checkbox.Focus.Wide.Dark": "{{.fg1}}",
+      "Checkbox.Focus.Thin.Default.Dark": "{{.fg1}}",
+      "Checkbox.Focus.Thin.Selected.Dark": "{{.fg1}}",
+      "Checkbox.Background.Disabled.Dark": "{{.bg1}}",
+      "Checkbox.Border.Disabled.Dark": "{{.bg4}}",
+      "Checkbox.Foreground.Disabled.Dark": "{{.bg4}}"
     }
   }
 }
