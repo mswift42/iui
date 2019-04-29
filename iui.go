@@ -1,8 +1,11 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"github.com/lucasb-eyer/go-colorful"
+	"io/ioutil"
+	"text/template"
 )
 
 func lighten(col *colorful.Color, factor float64) string {
@@ -32,10 +35,10 @@ func luminance(col *colorful.Color) float64 {
 }
 
 func addColors(colors map[string]string) map[string]string {
-	bg, _ := colorful.Hex(colors["bg"])
+	bg, _ := colorful.Hex(colors["bg1"])
 	var bg01 string
 	if hasDarkBG(&bg) {
-		bg01 = darken(&bg, 0.12)
+		bg01 = darken(&bg, 0.1)
 	} else {
 		bg01 = lighten(&bg, 0.1)
 	}
@@ -78,6 +81,25 @@ var reykjavik = map[string]string{
 	"warning2":  "#e86310",
 }
 
+var soft_charcoal = map[string]string{
+	"author":    "Martin Haesler",
+	"themename": "soft-charcoal",
+	"fg1":       "#c2c2c2",
+	"fg2":       "#b2b2b2",
+	"bg1":       "#191919",
+	"bg2":       "#2b2b2b",
+	"bg3":       "#3e3e3e",
+	"bg4":       "505050",
+	"builtin":   "#54686d",
+	"keyword":   "#8aa234",
+	"const":     "8aa6c1",
+	"comment":   "#808080",
+	"func":      "#7a8bbd",
+	"string":    "#5d90cd",
+	"warning":   "#ff6523",
+	"warning2":  "#ff2370",
+}
+
 func main() {
 	c1, _ := colorful.Hex("#f5ebe1")
 	fmt.Println(lighten(&c1, 0.16))
@@ -100,4 +122,19 @@ func main() {
 	fmt.Println(luminance(&c1))
 	fmt.Println("darken: ", darken(&c1, 0.1))
 	fmt.Println(hasDarkBG(&c1))
+	cols := addColors(reykjavik)
+	fmt.Println(cols)
+	var res bytes.Buffer
+	tmpl, err := template.ParseFiles("templ.txt")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(err)
+	fmt.Println(res.String())
+	charcols := addColors(soft_charcoal)
+
+	err = tmpl.Execute(&res, charcols)
+	if err := ioutil.WriteFile(soft_charcoal["themename"]+".theme.json",res.Bytes(), 0644 );err != nil {
+		panic(err)
+	}
 }
