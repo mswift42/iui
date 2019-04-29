@@ -100,6 +100,25 @@ var soft_charcoal = map[string]string{
 	"warning2":  "#ff2370",
 }
 
+var madrid = map[string]string{
+	"author":    "Martin Haesler",
+	"themename": "madrid",
+	"fg1":       "#b1b1b1",
+	"fg2":       "#a3a3a3",
+	"bg1":       "#1b1b1b",
+	"bg2":       "#2d2d2d",
+	"bg3":       "#3f3f3f",
+	"bg4":       "#525252",
+	"builtin":   "#a78360",
+	"keyword":   "#b7797d",
+	"const":     "#a27ea4",
+	"comment":   "#5d5d5d",
+	"func":      "#96546c",
+	"string":    "#818f62",
+	"warning":   "#e81050",
+	"warning2":  "#e86310",
+}
+
 func main() {
 	c1, _ := colorful.Hex("#f5ebe1")
 	fmt.Println(lighten(&c1, 0.16))
@@ -134,7 +153,7 @@ func main() {
 	charcols := addColors(soft_charcoal)
 
 	err = tmpl.Execute(&res, charcols)
-	if err := ioutil.WriteFile(soft_charcoal["themename"]+".theme.json",res.Bytes(), 0644 );err != nil {
+	if err := ioutil.WriteFile(soft_charcoal["themename"]+".theme.json", res.Bytes(), 0644); err != nil {
 		panic(err)
 	}
 }
