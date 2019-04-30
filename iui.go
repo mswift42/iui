@@ -119,6 +119,25 @@ var madrid = map[string]string{
 	"warning2":  "#e86310",
 }
 
+var silkworm = map[string]string{
+	"author":    "Martin Haesler",
+	"themename": "silkworm",
+	"fg1":       "#585858",
+	"fg2":       "#656565",
+	"bg1":       "#ece3db",
+	"bg2":       "#d9d1c9",
+	"bg3":       "#c6bfb8",
+	"bg4":       "#b3ada6",
+	"builtin":   "#0073b5",
+	"keyword":   "#367a7f",
+	"const":     "#a27ea4",
+	"comment":   "#a9a9a9",
+	"func":      "#ad4271",
+	"string":    "#3b4bab",
+	"warning":   "#ff1276",
+	"warning2":  "#ff4d12",
+}
+
 func main() {
 	c1, _ := colorful.Hex("#f5ebe1")
 	fmt.Println(lighten(&c1, 0.16))
@@ -150,10 +169,10 @@ func main() {
 	}
 	fmt.Println(err)
 	fmt.Println(res.String())
-	charcols := addColors(soft_charcoal)
+	madridcols := addColors(madrid)
 
-	err = tmpl.Execute(&res, charcols)
-	if err := ioutil.WriteFile(soft_charcoal["themename"]+".theme.json", res.Bytes(), 0644); err != nil {
+	err = tmpl.Execute(&res, madridcols)
+	if err := ioutil.WriteFile(madrid["themename"]+".theme.json", res.Bytes(), 0644); err != nil {
 		panic(err)
 	}
 }
