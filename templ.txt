@@ -2,7 +2,7 @@
   "name": "{{.themename}}",
   "dark": {{.isDark}},
   "author": "{{.author}}",
-  "editorScheme": "/{{themename}}.xml",
+  "editorScheme": "/{{.themename}}.xml",
   "ui": {
     "*": {
       "background": "{{.bg1}}",
@@ -99,7 +99,7 @@
       "nativeBackground": "{{.fg1}}",
       "nativeSearchNotMatchedBackground": "{{.bg3}}",
       "parentBackground": "{{.fg1}}",
-      "parentSearchNotMatchedBackground": "#757575",
+      "parentSearchNotMatchedBackground": "{{.bg3}}",
       "JVMFocusBackground": "{{.bg3}}",
       "JVMFocusSearchNotMatchedBackground": "{{.bg3}}",
       "nativeFocusBackground": "{{.bg3}}",
@@ -117,7 +117,7 @@
       "background": "{{.bg2}}",
       "borderColor": "{{.fg2}}"
     },
-    "Label.selectedDisabledForeground": "#ff4d12",
+    "Label.selectedDisabledForeground": "{{.warning2}}",
     "Link": {
       "activeForeground": "{{.const}}",
       "hoverForeground": "{{.const}}",
@@ -129,18 +129,18 @@
       "background": "{{.bg1}}",
       "errorForeground": "{{.fg1}}",
       "errorBackground": "{{.invwarning}}",
-      "errorBorderColor": "#ff1276",
+      "errorBorderColor": "{{.warning}}",
       "MoreButton.innerBorderColor": "{{.bg1}}",
       "ToolWindow": {
         "informativeForeground": "{{.fg1}}",
         "informativeBackground": "{{.bg2}}",
         "informativeBorderColor": "{{.fg2}}",
         "warningForeground": "{{.fg1}}",
-        "warningBackground": "#ffe1d7",
-        "warningBorderColor": "#ff1276",
+        "warningBackground": "{{.invwarning2}}",
+        "warningBorderColor": "{{.warning}}",
         "errorForeground": "{{.fg1}}",
         "errorBackground": "{{.invwarning}}",
-        "errorBorderColor": "#ff1276"
+        "errorBorderColor": "{{.warning}}"
       }
     },
     "ParameterInfo": {
@@ -192,10 +192,10 @@
       "progressColor": "{{.fg1}}",
       "indeterminateStartColor": "{{.fg1}}",
       "indeterminateEndColor": "{{.bg2}}",
-      "failedColor": "#ff1276",
+      "failedColor": "{{.warning}}",
       "failedEndColor": "{{.invwarning}}",
-      "passedColor": "#4A8C50",
-      "passedEndColor": "#e5f0f1"
+      "passedColor": "{{.keyword}}",
+      "passedEndColor": "{{.invkeyword}}"
     },
     "ScrollBar": {
       "Transparent": {
@@ -258,7 +258,7 @@
       "lightSelectionForeground": "{{.fg1}}",
       "lightSelectionInactiveForeground": "{{.fg1}}",
       "lightSelectionBackground": "{{.bg2}}",
-      "lightSelectionInactiveBackground": "#a9a9a9"
+      "lightSelectionInactiveBackground": "{{.comment}}"
     },
     "ToggleButton": {
       "onForeground": "{{.fg1}}",
@@ -278,9 +278,9 @@
         "inactiveBackground": "{{.bg2}}"
       },
       "HeaderTab": {
-        "selectedBackground": "#F1E5EEFF",
+        "selectedBackground": "{{.invtype}}FF",
         "selectedInactiveBackground": "{{.bg4}}FF",
-        "hoverBackground": "#F1E5EEFF",
+        "hoverBackground": "{{.invtype}}FF",
         "hoverInactiveBackground": "{{.bg4}}FF"
       },
       "Button": {
@@ -291,20 +291,20 @@
     },
     "ValidationTooltip": {
       "errorBackground": "{{.invwarning}}",
-      "errorBorderColor": "#ff1276",
-      "warningBackground": "#ffe1d7",
-      "warningBorderColor": "#ff1276"
+      "errorBorderColor": "{{.warning}}",
+      "warningBackground": "{{.invwarning2}}",
+      "warningBorderColor": "{{.warning}}"
     },
     "VersionControl": {
       "Log.Commit": {
-        "currentBranchBackground": "#F3E4E3",
-        "unmatchedForeground": "#ff4d12"
+        "currentBranchBackground": "{{.invstring}}",
+        "unmatchedForeground": "{{.warning2}}"
       },
       "RefLabel": {
         "backgroundBase": "{{.bg3}}",
         "backgroundBrightness": 0.7
       },
-      "FileHistory.Commit.selectedBranchBackground": "#F3E4E3"
+      "FileHistory.Commit.selectedBranchBackground": "{{.invstring}}"
     },
     "WelcomeScreen": {
       "Projects.selectionInactiveBackground": "{{.bg3}}",
