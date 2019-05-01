@@ -300,7 +300,7 @@
     },
     "VersionControl": {
       "Log.Commit": {
-        "currentBranchBackground": "{{.invstring}}",
+        "currentBranchBackground": "{{.bg2}}",
         "unmatchedForeground": "{{.warning2}}"
       },
       "RefLabel": {
