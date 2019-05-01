@@ -52,7 +52,7 @@
         "nonEditableBackground": "{{.bg2}}"
       }
     },
-    "ComboPopup.border": "1,1,1,1,E6E6E6",
+    "ComboPopup.border": "1,1,1,1,{{.bg2}}",
     "CompletionPopup": {
       "matchForeground": "{{.bg2}}",
       "matchSelectionForeground": "{{.bg2}}"
