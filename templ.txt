@@ -6,8 +6,11 @@
   "ui": {
     "*": {
       "background": "{{.bg1}}",
+      "foreground": "{{.fg1}}",
       "inactiveBackground": "{{.bg2}}",
       "disabledBackground": "{{.bg2}}",
+      "selectionBackground": "{{.bg3}}",
+      "selectionInactiveBackground": "{{.bg2}}",
       "acceleratorForeground": "{{.fg1}}",
       "acceleratorSelectionForeground": "{{.fg1}}",
       "errorForeground": "{{.warning}}",
