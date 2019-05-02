@@ -89,7 +89,7 @@ var soft_charcoal = map[string]string{
 	"bg1":       "#191919",
 	"bg2":       "#2b2b2b",
 	"bg3":       "#3e3e3e",
-	"bg4":       "505050",
+	"bg4":       "#505050",
 	"builtin":   "#54686d",
 	"keyword":   "#8aa234",
 	"const":     "8aa6c1",
@@ -138,6 +138,104 @@ var silkworm = map[string]string{
 	"warning2":  "#ff4d12",
 }
 
+var metalheart = map[string]string{
+	"author":    "Martin Haesler",
+	"themename": "metalheart",
+	"fg1":       "#8693ae",
+	"fg2":       "#7b87a0",
+	"bg1":       "#1d272a",
+	"bg2":       "#2f383b",
+	"bg3":       "#414a4c",
+	"bg4":       "#535b5d",
+	"builtin":   "#9a91b8",
+	"keyword":   "#6e94ad",
+	"const":     "5980a3",
+	"comment":   "#727272",
+	"func":      "#937aba",
+	"string":    "#ba899c",
+	"warning":   "#ff0000",
+	"warning2":  "#ff8800",
+}
+
+var foggyNight = map[string]string{
+	"author":    "Martin Haesler",
+	"themename": "foggy-night",
+	"fg1":       "#8f8f8f",
+	"fg2":       "#848484",
+	"bg1":       "#292929",
+	"bg2":       "#3a3a3a",
+	"bg3":       "#4b4b4b",
+	"bg4":       "#5c5c5c",
+	"builtin":   "#997599",
+	"keyword":   "#6b83ac",
+	"const":     "#3e8c9d",
+	"comment":   "#626262",
+	"func":      "#9e7a5a",
+	"string":    "#ad7a76",
+	"warning":   "#e81050",
+	"warning2":  "#e86310",
+}
+
+var whiteSand = map[string]string{
+	"author":    "Martin Haesler",
+	"themename": "white-sand",
+	"fg1":       "#585858",
+	"fg2":       "#656565",
+	"bg1":       "#f5ebe1",
+	"bg2":       "#e1d8cf",
+	"bg3":       "#cec5bd",
+	"bg4":       "#bab3ab",
+	"builtin":   "#1a8591",
+	"keyword":   "#4a858c",
+	"const":     "#697024",
+	"comment":   "#a9a9a9",
+	"func":      "#bd745e",
+	"string":    "#b3534b",
+	"type":      "#8c4a79",
+	"warning":   "#ff1276",
+	"warning2":  "#ff4d12",
+}
+
+var warmNight = map[string]string{
+	"author":    "Martin Haesler",
+	"themename": "warm-night",
+	"fg1":       "#b1b1b1",
+	"fg2":       "#a3a3a3",
+	"bg1":       "#292424",
+	"bg2":       "#3a3636",
+	"bg3":       "#4b4747",
+	"bg4":       "#5c5959",
+	"builtin":   "#71a46c",
+	"keyword":   "#96905f",
+	"const":     "#bd845f",
+	"comment":   "#5d5a58",
+	"func":      "#b680b1",
+	"string":    "#71a19f",
+	"type":      "#8b8fc6",
+	"warning":   "#e81050",
+	"warning2":  "#e86310",
+}
+
+var thursday = map[string]string{
+	"author":    "Martin Haesler",
+	"themename": "thursday",
+	"fg1":       "#2f2f2f",
+	"fg2":       "#404040",
+	"bg1":       "#f9fbfd",
+	"bg2":       "#e5e7e9",
+	"bg3":       "#d1d3d5",
+	"bg4":       "#bdbfc0",
+	"builtin":   "#636792",
+	"keyword":   "#28728f",
+	"const":     "#28766e",
+	"comment":   "#949494",
+	"func":      "#935c54",
+	"string":    "#8c5c79",
+	"type":      "#56724b",
+	"warning":   "#fa0c0c",
+	"warning2":  "#fa7b0c",
+}
+
 func main() {
 	c1, _ := colorful.Hex("#f5ebe1")
 	fmt.Println(lighten(&c1, 0.16))
@@ -160,8 +258,6 @@ func main() {
 	fmt.Println(luminance(&c1))
 	fmt.Println("darken: ", darken(&c1, 0.1))
 	fmt.Println(hasDarkBG(&c1))
-	cols := addColors(reykjavik)
-	fmt.Println(cols)
 	var res bytes.Buffer
 	tmpl, err := template.ParseFiles("templ.txt")
 	if err != nil {
@@ -169,10 +265,20 @@ func main() {
 	}
 	fmt.Println(err)
 	fmt.Println(res.String())
-	madridcols := addColors(madrid)
-
-	err = tmpl.Execute(&res, madridcols)
-	if err := ioutil.WriteFile(madrid["themename"]+".theme.json", res.Bytes(), 0644); err != nil {
+	foggycols := addColors(foggyNight)
+	fmt.Println("foggyNight cols: ", foggycols)
+	reykjavikcols := addColors(reykjavik)
+	fmt.Println("Reykjavik colours: ", reykjavikcols)
+	reykbg, _ := colorful.Hex("#112328")
+	reykfg2, _ := colorful.Hex("#a3a3a3")
+	reykfg1, _ := colorful.Hex("#b1b1b1")
+	softcharcoalcols := addColors(soft_charcoal)
+	fmt.Println(softcharcoalcols)
+	warmnightcols := addColors(warmNight)
+	fmt.Println("inverted reykjavik fg2: ", invertColor(&reykbg, &reykfg2))
+	fmt.Println("inverted reykjavik fg1: ", invertColor(&reykbg, &reykfg1))
+	err = tmpl.Execute(&res, warmnightcols)
+	if err := ioutil.WriteFile(warmnightcols["themename"]+".theme.json", res.Bytes(), 0644); err != nil {
 		panic(err)
 	}
 }
