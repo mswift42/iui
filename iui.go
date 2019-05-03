@@ -2,9 +2,11 @@ package main
 
 import (
 	"bytes"
+	"encoding/xml"
 	"fmt"
 	"github.com/lucasb-eyer/go-colorful"
 	"io/ioutil"
+	"os"
 	"text/template"
 )
 
@@ -32,6 +34,15 @@ func invertColor(bgcol, col *colorful.Color) string {
 func luminance(col *colorful.Color) float64 {
 	_, _, l := col.Hsl()
 	return l
+}
+
+type ThemeFile struct {
+	Colors []ColorOptions `xml:"colors>option"`
+}
+
+type ColorOptions struct {
+	Name  string `xml:"name,attr"`
+	Value string `xml:"value,attr"`
 }
 
 func addColors(colors map[string]string) map[string]string {
@@ -274,11 +285,19 @@ func main() {
 	reykfg1, _ := colorful.Hex("#b1b1b1")
 	softcharcoalcols := addColors(soft_charcoal)
 	fmt.Println(softcharcoalcols)
-	warmnightcols := addColors(warmNight)
+	thursdaycols := addColors(thursday)
 	fmt.Println("inverted reykjavik fg2: ", invertColor(&reykbg, &reykfg2))
 	fmt.Println("inverted reykjavik fg1: ", invertColor(&reykbg, &reykfg1))
-	err = tmpl.Execute(&res, warmnightcols)
-	if err := ioutil.WriteFile(warmnightcols["themename"]+".theme.json", res.Bytes(), 0644); err != nil {
+	err = tmpl.Execute(&res, thursdaycols)
+	if err := ioutil.WriteFile(thursdaycols["themename"]+".theme.json", res.Bytes(), 0644); err != nil {
 		panic(err)
 	}
+	file, err := os.Open("white-sand.xml")
+	if err != nil {
+		panic(err)
+	}
+	var td ThemeFile
+	bytes, _ := ioutil.ReadAll(file)
+	xml.Unmarshal(bytes, &td)
+	fmt.Println(td)
 }
