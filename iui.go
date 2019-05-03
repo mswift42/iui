@@ -37,7 +37,17 @@ func luminance(col *colorful.Color) float64 {
 }
 
 type ThemeFile struct {
-	Colors []ColorOptions `xml:"colors>option"`
+	Colors     []ColorOptions `xml:"colors>option"`
+	ThemeAttrs []AttrOption   `xml:"attributes>option"`
+}
+
+type AttrOption struct {
+	Option string      `xml:"name,attr"`
+	Values []AttrValue `xml:"value>option"`
+}
+type AttrValue struct {
+	Name  string `xml:"name,attr"`
+	Value string `xml:"value,attr"`
 }
 
 type ColorOptions struct {
@@ -299,5 +309,5 @@ func main() {
 	var td ThemeFile
 	bytes, _ := ioutil.ReadAll(file)
 	xml.Unmarshal(bytes, &td)
-	fmt.Println(td)
+	fmt.Println(td.ThemeAttrs)
 }
