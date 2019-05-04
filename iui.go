@@ -78,6 +78,8 @@ func colMap(cm []ColorOptions) map[string]string {
 }
 
 type ThemeMap struct {
+	ThemeName   string
+	Author      string
 	DarkBG      bool
 	Fg1         string
 	Fg2         string
@@ -113,6 +115,8 @@ func addColors(colors map[string]string) ThemeMap {
 		bg01 = lighten(&bg, 0.1)
 	}
 	var tm ThemeMap
+	tm.Author = colors["author"]
+	tm.ThemeName = colors["themename"]
 	tm.Bg1 = colors["bg1"]
 	tm.Bg01 = bg01
 	tm.Fg1 = colors["fg1"]
