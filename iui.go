@@ -7,6 +7,7 @@ import (
 	"github.com/lucasb-eyer/go-colorful"
 	"io/ioutil"
 	"os"
+	"strings"
 	"text/template"
 )
 
@@ -53,6 +54,19 @@ type AttrValue struct {
 type ColorOptions struct {
 	Name  string `xml:"name,attr"`
 	Value string `xml:"value,attr"`
+}
+
+func attrMap(attros []AttrOption) map[string]string {
+	am := make(map[string]string)
+	for _, i := range attros {
+		for _, j := range i.Values {
+			lower := strings.ToLower(j.Name)
+			if lower == "foreground" {
+				am[i.Option] = j.Value
+			}
+		}
+	}
+	return am
 }
 
 func addColors(colors map[string]string) map[string]string {
