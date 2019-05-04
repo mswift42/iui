@@ -77,15 +77,43 @@ func colMap(cm []ColorOptions) map[string]string {
 	return cmap
 }
 
+type ThemeMap struct {
+	DarkBG      bool
+	Fg1         string
+	Fg2         string
+	Bg1         string
+	Bg01        string
+	Bg2         string
+	Bg3         string
+	Bg4         string
+	Builtin     string
+	Keyword     string
+	Constant    string
+	Comment     string
+	Func        string
+	String      string
+	Warning     string
+	Warning2    string
+	InvBuiltin  string
+	InvKeyword  string
+	InvType     string
+	InvFunc     string
+	InvString   string
+	InvWarning  string
+	InvWarning2 string
+}
+
 func addColors(colors map[string]string) map[string]string {
 	bg, _ := colorful.Hex(colors["bg1"])
 	var bg01 string
+
 	if hasDarkBG(&bg) {
 		bg01 = darken(&bg, 0.1)
 	} else {
 		bg01 = lighten(&bg, 0.1)
 	}
 	colors["bg01"] = bg01
+	colors["darkBG"] = hasDarkBG(&bg)
 	builtin, _ := colorful.Hex(colors["builtin"])
 	keyw, _ := colorful.Hex(colors["keyword"])
 	typ, _ := colorful.Hex(colors["type"])
