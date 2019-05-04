@@ -103,7 +103,7 @@ type ThemeMap struct {
 	InvWarning2 string
 }
 
-func addColors(colors map[string]string) map[string]string {
+func addColors(colors map[string]string) ThemeMap {
 	bg, _ := colorful.Hex(colors["bg1"])
 	var bg01 string
 
@@ -112,8 +112,15 @@ func addColors(colors map[string]string) map[string]string {
 	} else {
 		bg01 = lighten(&bg, 0.1)
 	}
-	colors["bg01"] = bg01
-	colors["darkBG"] = hasDarkBG(&bg)
+	var tm ThemeMap
+	tm.Bg1 = colors["bg1"]
+	tm.Bg01 = bg01
+	tm.Fg1 = colors["fg1"]
+	tm.Fg2 = colors["fg2"]
+	tm.Bg2 = colors["bg2"]
+	tm.Bg3 = colors["bg3"]
+	tm.Bg4 = colors["bg4"]
+	tm.DarkBG = hasDarkBG(&bg)
 	builtin, _ := colorful.Hex(colors["builtin"])
 	keyw, _ := colorful.Hex(colors["keyword"])
 	typ, _ := colorful.Hex(colors["type"])
@@ -121,16 +128,23 @@ func addColors(colors map[string]string) map[string]string {
 	warn1, _ := colorful.Hex(colors["warning"])
 	warn2, _ := colorful.Hex(colors["warning2"])
 	str, _ := colorful.Hex(colors["string"])
+	tm.Builtin = colors["builtin"]
+	tm.Keyword = colors["keyword"]
+	tm.Constant = colors["const"]
+	tm.Comment = colors["comment"]
+	tm.Func = colors["func"]
+	tm.String = colors["string"]
+	tm.Warning = colors["warning"]
+	tm.Warning2 = colors["warning2"]
+	tm.InvBuiltin = invertColor(&bg, &builtin)
+	tm.InvKeyword = invertColor(&bg, &keyw)
+	tm.InvType = invertColor(&bg, &typ)
+	tm.InvFunc = invertColor(&bg, &fnc)
+	tm.InvString = invertColor(&bg, &str)
+	tm.InvWarning = invertColor(&bg, &warn1)
+	tm.InvWarning2 = invertColor(&bg, &warn2)
 
-	colors["invbuiltin"] = invertColor(&bg, &builtin)
-	colors["invkeyword"] = invertColor(&bg, &keyw)
-	colors["invtype"] = invertColor(&bg, &typ)
-	colors["invfunc"] = invertColor(&bg, &fnc)
-	colors["invwarning"] = invertColor(&bg, &warn1)
-	colors["invwarning2"] = invertColor(&bg, &warn2)
-	colors["invstring"] = invertColor(&bg, &str)
-
-	return colors
+	return tm
 }
 
 func main() {
