@@ -69,6 +69,14 @@ func attrMap(attros []AttrOption) map[string]string {
 	return am
 }
 
+func colMap(cm []ColorOptions) map[string]string {
+	cmap := make(map[string]string)
+	for _, i := range cm {
+		cmap[i.Name] = i.Value
+	}
+	return cmap
+}
+
 func addColors(colors map[string]string) map[string]string {
 	bg, _ := colorful.Hex(colors["bg1"])
 	var bg01 string
@@ -324,4 +332,6 @@ func main() {
 	bytes, _ := ioutil.ReadAll(file)
 	xml.Unmarshal(bytes, &td)
 	fmt.Println(td.ThemeAttrs)
+	fmt.Println(attrMap(td.ThemeAttrs))
+	fmt.Println(colMap(td.Colors))
 }
