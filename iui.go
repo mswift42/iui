@@ -88,8 +88,6 @@ func colMap(cm []ColorOptions) map[string]string {
 }
 
 type ThemeMap struct {
-	ThemeName   string
-	Author      string
 	DarkBG      bool
 	Fg1         string
 	Fg2         string
