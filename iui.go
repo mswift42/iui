@@ -201,8 +201,14 @@ func main() {
 	xml.Unmarshal(bytes, &td)
 	tm, err := newThemeMap(&td)
 	if err != nil {
-		fmt.Println(err)
+		panic(err)
 	}
 	fmt.Println(tm)
+	if err := tmpl.Execute(&res, tm); err != nil {
+		panic(err)
+	}
+	if err := ioutil.WriteFile("white_sand.theme.json", res.Bytes(), 0644); err != nil {
+		fmt.Println(err)
+	}
 
 }

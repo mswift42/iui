@@ -1,8 +1,8 @@
 {
-  "name": "{{.Themename}}",
+  "name": "",
   "dark": {{.DarkBG}},
-  "author": "{{.Author}}",
-  "editorScheme": "/{{.Themename}}.xml",
+  "author": "",
+  "editorScheme": "",
   "ui": {
     "*": {
       "background": "{{.Bg1}}",
