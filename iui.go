@@ -116,32 +116,43 @@ type ThemeMap struct {
 	InvWarning2 string
 }
 
-func addColors(tm *ThemeMap) *ThemeMap {
-	bg, _ := colorful.Hex(tm.Bg1)
-	var bg01 string
+func (tm *ThemeMap) addColors() error {
+	bg, err := colorful.Hex(tm.Bg1)
+	if err != nil {
+		return err
+	}
+	fg, err := colorful.Hex(tm.Fg1)
+	if err != nil {
+		return err
+	}
+	var bg01, bg2, bg3, bg4, fg2 string
 
 	if hasDarkBG(&bg) {
 		bg01 = darken(&bg, 0.1)
+		bg2 = lighten(&bg, 0.08)
+		bg3 = lighten(&bg, 0.16)
+		bg4 = lighten(&bg, 0.24)
+		fg2 = darken(&fg, 0.08)
 	} else {
 		bg01 = lighten(&bg, 0.1)
+		bg2 = darken(&bg, 0.08)
+		bg3 = darken(&bg, 0.16)
+		bg4 = darken(&bg, 0.24)
+		fg2 = lighten(&fg, 0.08)
 	}
 	tm.Bg01 = bg01
 	tm.DarkBG = hasDarkBG(&bg)
+	tm.Bg2 = bg2
+	tm.Bg3 = bg3
+	tm.Bg4 = bg4
+	tm.Fg2 = fg2
 	builtin, _ := colorful.Hex(tm.Builtin)
 	keyw, _ := colorful.Hex(tm.Keyword)
-	typ, _ := colorful.Hex(tm.)
-	fnc, _ := colorful.Hex(colors["func"])
-	warn1, _ := colorful.Hex(colors["warning"])
-	warn2, _ := colorful.Hex(colors["warning2"])
-	str, _ := colorful.Hex(colors["string"])
-	tm.Builtin = colors["builtin"]
-	tm.Keyword = colors["keyword"]
-	tm.Constant = colors["const"]
-	tm.Comment = colors["comment"]
-	tm.Func = colors["func"]
-	tm.String = colors["string"]
-	tm.Warning = colors["warning"]
-	tm.Warning2 = colors["warning2"]
+	typ, _ := colorful.Hex(tm.Type)
+	fnc, _ := colorful.Hex(tm.Func)
+	warn1, _ := colorful.Hex(tm.Warning)
+	warn2, _ := colorful.Hex(tm.Warning2)
+	str, _ := colorful.Hex(tm.String)
 	tm.InvBuiltin = invertColor(&bg, &builtin)
 	tm.InvKeyword = invertColor(&bg, &keyw)
 	tm.InvType = invertColor(&bg, &typ)
@@ -149,14 +160,22 @@ func addColors(tm *ThemeMap) *ThemeMap {
 	tm.InvString = invertColor(&bg, &str)
 	tm.InvWarning = invertColor(&bg, &warn1)
 	tm.InvWarning2 = invertColor(&bg, &warn2)
-
-	return tm
+	return nil
 }
 
-func newThemeMap(td *ThemeFile) ThemeMap {
+func newThemeMap(td *ThemeFile) (ThemeMap, error) {
 	var tm ThemeMap
 	cols := colMap(td.Colors)
 	am := attrMap(td.ThemeAttrs)
+	tm.Bg1 = am["TEXT"].bg
+	tm.Fg1 = am["TEXT"].fg
+	tm.Func = am["DEFAULT_FUNCTION_DECLARATION"].fg
+	tm.Comment = am["DEFAULT_BLOCK_COMMENT"].fg
+	tm.Constant = am["DEFAULT_CONSTANT"].fg
+	tm.Keyword = am["DEFAULT_KEYWORD"].fg
+	tm.String = am["DEFAULT_STRING"].fg
+	tm.Type = am["DEFAULT_CLASS_NAME"].fg
+	tm.Builtin = am["DEFAULT_INSTANCE_FIELD"].fg
 
 }
 
