@@ -56,22 +56,22 @@ type ColorOptions struct {
 	Value string `xml:"value,attr"`
 }
 
-type ThemeAttributes struct {
-	FG string
-	BG string
+type themeAttributes struct {
+	fg string
+	bg string
 }
 
-func attrMap(attros []AttrOption) map[string]ThemeAttributes {
-	tamap := make(map[string]ThemeAttributes)
+func attrMap(attros []AttrOption) map[string]themeAttributes {
+	tamap := make(map[string]themeAttributes)
 	for _, i := range attros {
-		var ta ThemeAttributes
+		var ta themeAttributes
 		for _, j := range i.Values {
 			lower := strings.ToLower(j.Name)
 			if lower == "foreground" {
-				ta.FG = j.Value
+				ta.fg = j.Value
 			}
 			if lower == "background" {
-				ta.BG = j.Value
+				ta.bg = j.Value
 			}
 		}
 		tamap[i.Option] = ta
@@ -104,6 +104,7 @@ type ThemeMap struct {
 	Comment     string
 	Func        string
 	String      string
+	Type        string
 	Warning     string
 	Warning2    string
 	InvBuiltin  string
@@ -115,8 +116,8 @@ type ThemeMap struct {
 	InvWarning2 string
 }
 
-func addColors(colors map[string]string) ThemeMap {
-	bg, _ := colorful.Hex(colors["bg1"])
+func addColors(tm *ThemeMap) *ThemeMap {
+	bg, _ := colorful.Hex(tm.Bg1)
 	var bg01 string
 
 	if hasDarkBG(&bg) {
@@ -124,20 +125,11 @@ func addColors(colors map[string]string) ThemeMap {
 	} else {
 		bg01 = lighten(&bg, 0.1)
 	}
-	var tm ThemeMap
-	tm.Author = colors["author"]
-	tm.ThemeName = colors["themename"]
-	tm.Bg1 = colors["bg1"]
 	tm.Bg01 = bg01
-	tm.Fg1 = colors["fg1"]
-	tm.Fg2 = colors["fg2"]
-	tm.Bg2 = colors["bg2"]
-	tm.Bg3 = colors["bg3"]
-	tm.Bg4 = colors["bg4"]
 	tm.DarkBG = hasDarkBG(&bg)
-	builtin, _ := colorful.Hex(colors["builtin"])
-	keyw, _ := colorful.Hex(colors["keyword"])
-	typ, _ := colorful.Hex(colors["type"])
+	builtin, _ := colorful.Hex(tm.Builtin)
+	keyw, _ := colorful.Hex(tm.Keyword)
+	typ, _ := colorful.Hex(tm.)
 	fnc, _ := colorful.Hex(colors["func"])
 	warn1, _ := colorful.Hex(colors["warning"])
 	warn2, _ := colorful.Hex(colors["warning2"])
@@ -161,6 +153,13 @@ func addColors(colors map[string]string) ThemeMap {
 	return tm
 }
 
+func newThemeMap(td *ThemeFile) ThemeMap {
+	var tm ThemeMap
+	cols := colMap(td.Colors)
+	am := attrMap(td.ThemeAttrs)
+
+}
+
 func main() {
 	var res bytes.Buffer
 	tmpl, err := template.ParseFiles("templ.txt")
@@ -179,6 +178,6 @@ func main() {
 	xml.Unmarshal(bytes, &td)
 	am := attrMap(td.ThemeAttrs)
 	fmt.Println(am)
-	fmt.Println(am["TEXT"].BG)
-	fmt.Println(am["TEXT"].FG)
+	fmt.Println(am["TEXT"].bg)
+	fmt.Println(am["TEXT"].fg)
 }
