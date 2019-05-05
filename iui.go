@@ -56,17 +56,29 @@ type ColorOptions struct {
 	Value string `xml:"value,attr"`
 }
 
-func attrMap(attros []AttrOption) map[string]string {
-	am := make(map[string]string)
+type ThemeAttributes struct {
+	Name string
+	FG   string
+	BG   string
+}
+
+func attrMap(attros []AttrOption) []ThemeAttributes {
+	var tas []ThemeAttributes
 	for _, i := range attros {
+		var ta ThemeAttributes
 		for _, j := range i.Values {
+			ta.Name = j.Name
 			lower := strings.ToLower(j.Name)
 			if lower == "foreground" {
-				am[i.Option] = j.Value
+				ta.FG = j.Value
+			}
+			if lower == "background" {
+				ta.BG = j.Value
 			}
 		}
+		tas = append(tas, ta)
 	}
-	return am
+	return tas
 }
 
 func colMap(cm []ColorOptions) map[string]string {
@@ -167,7 +179,5 @@ func main() {
 	var td ThemeFile
 	bytes, _ := ioutil.ReadAll(file)
 	xml.Unmarshal(bytes, &td)
-	fmt.Println(td.ThemeAttrs)
 	fmt.Println(attrMap(td.ThemeAttrs))
-	fmt.Println(colMap(td.Colors))
 }
