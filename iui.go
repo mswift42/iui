@@ -116,6 +116,8 @@ type ThemeMap struct {
 	InvWarning2 string
 }
 
+const HexHash = "#"
+
 func (tm *ThemeMap) addColors() error {
 	bg, err := colorful.Hex(tm.Bg1)
 	if err != nil {
@@ -165,18 +167,20 @@ func (tm *ThemeMap) addColors() error {
 
 func newThemeMap(td *ThemeFile) (ThemeMap, error) {
 	var tm ThemeMap
-	cols := colMap(td.Colors)
 	am := attrMap(td.ThemeAttrs)
-	tm.Bg1 = am["TEXT"].bg
-	tm.Fg1 = am["TEXT"].fg
-	tm.Func = am["DEFAULT_FUNCTION_DECLARATION"].fg
-	tm.Comment = am["DEFAULT_BLOCK_COMMENT"].fg
-	tm.Constant = am["DEFAULT_CONSTANT"].fg
-	tm.Keyword = am["DEFAULT_KEYWORD"].fg
-	tm.String = am["DEFAULT_STRING"].fg
-	tm.Type = am["DEFAULT_CLASS_NAME"].fg
-	tm.Builtin = am["DEFAULT_INSTANCE_FIELD"].fg
-
+	tm.Bg1 = HexHash + am["TEXT"].bg
+	tm.Fg1 = HexHash + am["TEXT"].fg
+	tm.Func = HexHash + am["DEFAULT_FUNCTION_DECLARATION"].fg
+	tm.Comment = HexHash + am["DEFAULT_BLOCK_COMMENT"].fg
+	tm.Constant = HexHash + am["DEFAULT_CONSTANT"].fg
+	tm.Keyword = HexHash + am["DEFAULT_KEYWORD"].fg
+	tm.String = HexHash + am["DEFAULT_STRING"].fg
+	tm.Type = HexHash + am["DEFAULT_CLASS_NAME"].fg
+	tm.Builtin = HexHash + am["DEFAULT_INSTANCE_FIELD"].fg
+	tm.Warning = HexHash + am["LOG_ERROR_OUTPUT"].fg
+	tm.Warning2 = HexHash + am["LOG_WARNING_OUTPUT"].fg
+	err := tm.addColors()
+	return tm, err
 }
 
 func main() {
@@ -195,8 +199,10 @@ func main() {
 	var td ThemeFile
 	bytes, _ := ioutil.ReadAll(file)
 	xml.Unmarshal(bytes, &td)
-	am := attrMap(td.ThemeAttrs)
-	fmt.Println(am)
-	fmt.Println(am["TEXT"].bg)
-	fmt.Println(am["TEXT"].fg)
+	tm, err := newThemeMap(&td)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(tm)
+
 }
