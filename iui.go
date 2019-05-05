@@ -57,17 +57,15 @@ type ColorOptions struct {
 }
 
 type ThemeAttributes struct {
-	Name string
-	FG   string
-	BG   string
+	FG string
+	BG string
 }
 
-func attrMap(attros []AttrOption) []ThemeAttributes {
-	var tas []ThemeAttributes
+func attrMap(attros []AttrOption) map[string]ThemeAttributes {
+	tamap := make(map[string]ThemeAttributes)
 	for _, i := range attros {
 		var ta ThemeAttributes
 		for _, j := range i.Values {
-			ta.Name = j.Name
 			lower := strings.ToLower(j.Name)
 			if lower == "foreground" {
 				ta.FG = j.Value
@@ -76,9 +74,9 @@ func attrMap(attros []AttrOption) []ThemeAttributes {
 				ta.BG = j.Value
 			}
 		}
-		tas = append(tas, ta)
+		tamap[i.Option] = ta
 	}
-	return tas
+	return tamap
 }
 
 func colMap(cm []ColorOptions) map[string]string {
@@ -179,5 +177,8 @@ func main() {
 	var td ThemeFile
 	bytes, _ := ioutil.ReadAll(file)
 	xml.Unmarshal(bytes, &td)
-	fmt.Println(attrMap(td.ThemeAttrs))
+	am := attrMap(td.ThemeAttrs)
+	fmt.Println(am)
+	fmt.Println(am["TEXT"].BG)
+	fmt.Println(am["TEXT"].FG)
 }
