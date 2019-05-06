@@ -32,11 +32,6 @@ func invertColor(bgcol, col *colorful.Color) string {
 	return colorful.Hsl(h2, s2, l1).Hex()
 }
 
-func luminance(col *colorful.Color) float64 {
-	_, _, l := col.Hsl()
-	return l
-}
-
 type ThemeFile struct {
 	Colors     []ColorOptions `xml:"colors>option"`
 	ThemeAttrs []AttrOption   `xml:"attributes>option"`
