@@ -5,6 +5,7 @@ import (
 	"encoding/xml"
 	"fmt"
 	"github.com/lucasb-eyer/go-colorful"
+	"github.com/mswift42/iui/cl"
 	"io/ioutil"
 	"os"
 	"strings"
@@ -202,6 +203,10 @@ func main() {
 	}
 	if err := ioutil.WriteFile("white_sand.theme.json", res.Bytes(), 0644); err != nil {
 		fmt.Println(err)
+	}
+	app := cl.InitCli()
+	if err := app.Run(os.Args); err != nil {
+		panic(err)
 	}
 
 }
