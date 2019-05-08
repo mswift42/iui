@@ -1,0 +1,13 @@
+{
+  "Foreground": "#d4d4d4",
+  "BACKGROUND": "#000000",
+  "Keyword": "#d4d4d4",
+  "Functionname": "#d4d4d4",
+  "Comment": "#808080",
+  "Constant": "#d4d4d4",
+  "String": "#d4d4d4",
+  "Type": "#d4d4d4",
+  "Builtin": "#d4d4d4",
+  "Warning": "#ff0000",
+  "Warning2": "#ff8800"
+}
