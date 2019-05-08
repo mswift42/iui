@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"encoding/json"
 	"encoding/xml"
 	"fmt"
 	"github.com/lucasb-eyer/go-colorful"
@@ -208,6 +209,14 @@ func newThemeMapFromJson(file *JsonThemeFile) (ThemeMap, error) {
 	return tm, err
 }
 
+func loadFile(fp string) ([]byte, error) {
+	file, err := os.Open(fp)
+	if err != nil {
+		return nil, err
+	}
+	return ioutil.ReadAll(file)
+}
+
 func main() {
 	var res bytes.Buffer
 	tmpl, err := template.ParseFiles("templ.txt")
@@ -228,7 +237,26 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	var jt JsonThemeFile
+	file, err = os.Open("ThemeColors.json")
+	if err != nil {
+		panic(err)
+	}
+	bytes, err = ioutil.ReadAll(file)
+	if err != nil {
+		panic(err)
+	}
+	err = json.Unmarshal(bytes, &jt)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(jt)
 	fmt.Println(tm)
+	ntfj, err := newThemeMapFromJson(&jt)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(ntfj)
 	if err := tmpl.Execute(&res, tm); err != nil {
 		panic(err)
 	}
