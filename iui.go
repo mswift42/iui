@@ -38,6 +38,20 @@ type ThemeFile struct {
 	ThemeAttrs []AttrOption   `xml:"attributes>option"`
 }
 
+type JsonThemeFile struct {
+	Foreground   string
+	Background   string
+	Keyword      string
+	Functionname string
+	Comment      string
+	Constant     string
+	String       string
+	Type         string
+	Builtin      string
+	Warning      string
+	Warning2     string
+}
+
 type AttrOption struct {
 	Option string      `xml:"name,attr"`
 	Values []AttrValue `xml:"value>option"`
