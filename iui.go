@@ -191,6 +191,23 @@ func newThemeMap(td *ThemeFile) (ThemeMap, error) {
 	return tm, err
 }
 
+func newThemeMapFromJson(file *JsonThemeFile) (ThemeMap, error) {
+	var tm ThemeMap
+	tm.Bg1 = file.Background
+	tm.Fg1 = file.Foreground
+	tm.Func = file.Functionname
+	tm.Comment = file.Comment
+	tm.Constant = file.Constant
+	tm.Keyword = file.Keyword
+	tm.String = file.String
+	tm.Type = file.Type
+	tm.Builtin = file.Builtin
+	tm.Warning = file.Warning
+	tm.Warning2 = file.Warning2
+	err := tm.addColors()
+	return tm, err
+}
+
 func main() {
 	var res bytes.Buffer
 	tmpl, err := template.ParseFiles("templ.txt")
