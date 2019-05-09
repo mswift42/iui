@@ -1,5 +1,10 @@
 package main
 
+import (
+	"encoding/json"
+	"testing"
+)
+
 var reykjavik = map[string]string{
 	"author":    "Martin Haesler",
 	"themename": "reykjavik",
@@ -114,24 +119,24 @@ var foggyNight = map[string]string{
 	"warning2":  "#e86310",
 }
 
-var whiteSand = map[string]string{
-	"author":    "Martin Haesler",
-	"themename": "white-sand",
-	"fg1":       "#585858",
-	"fg2":       "#656565",
-	"bg1":       "#f5ebe1",
-	"bg2":       "#e1d8cf",
-	"bg3":       "#cec5bd",
-	"bg4":       "#bab3ab",
-	"builtin":   "#1a8591",
-	"keyword":   "#4a858c",
-	"const":     "#697024",
-	"comment":   "#a9a9a9",
-	"func":      "#bd745e",
-	"string":    "#b3534b",
-	"type":      "#8c4a79",
-	"warning":   "#ff1276",
-	"warning2":  "#ff4d12",
+var whiteSand = ThemeMap{
+	DarkBG:   false,
+	Fg1:      "#585858",
+	Fg2:      "#656565",
+	Bg1:      "#f5ebe1",
+	Bg01:     "#000000",
+	Bg2:      "#e1d8cf",
+	Bg3:      "#cec5bd",
+	Bg4:      "#bab3ab",
+	Builtin:  "#1a8591",
+	Keyword:  "#4a858c",
+	Constant: "#697024",
+	Comment:  "#a9a9a9",
+	Func:     "#bd745e",
+	String:   "#b3534b",
+	Type:     "#8c4a79",
+	Warning:  "#ff1276",
+	Warning2: "#ff4d12",
 }
 
 var warmNight = map[string]string{
@@ -172,4 +177,23 @@ var thursday = map[string]string{
 	"type":      "#56724b",
 	"warning":   "#fa0c0c",
 	"warning2":  "#fa7b0c",
+}
+
+func TestNewThemeMapFromJson(t *testing.T) {
+	bytes, err := loadFile("white-sand.json")
+	if err != nil {
+		panic(err)
+	}
+	var jt JsonThemeFile
+	if err := json.Unmarshal(bytes, &jt); err != nil {
+		panic(err)
+	}
+	theme, err := newThemeMapFromJson(&jt)
+	if err != nil {
+		panic(err)
+	}
+	if theme.Bg1 != "#f5ebe1" {
+		t.Errorf("Expected bg1 to be %s, got %s",
+			"#f5ebe1", theme.Bg1)
+	}
 }

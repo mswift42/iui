@@ -226,23 +226,16 @@ func main() {
 	fmt.Println(tmpl)
 	fmt.Println(err)
 	fmt.Println(res.String())
-	file, err := os.Open("white-sand.xml")
-	if err != nil {
-		panic(err)
-	}
 	var td ThemeFile
-	bytes, _ := ioutil.ReadAll(file)
+	bytes, _ := loadFile("white-sand.xml")
 	xml.Unmarshal(bytes, &td)
+
 	tm, err := newThemeMap(&td)
 	if err != nil {
 		panic(err)
 	}
 	var jt JsonThemeFile
-	file, err = os.Open("ThemeColors.json")
-	if err != nil {
-		panic(err)
-	}
-	bytes, err = ioutil.ReadAll(file)
+	bytes, err = loadFile("ThemeColors.json")
 	if err != nil {
 		panic(err)
 	}
