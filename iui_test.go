@@ -124,7 +124,7 @@ var whiteSand = ThemeMap{
 	Fg1:      "#585858",
 	Fg2:      "#656565",
 	Bg1:      "#f5ebe1",
-	Bg01:     "#000000",
+	Bg01:     "#f6ede4",
 	Bg2:      "#e1d8cf",
 	Bg3:      "#cec5bd",
 	Bg4:      "#bab3ab",
@@ -192,8 +192,17 @@ func TestNewThemeMapFromJson(t *testing.T) {
 	if err != nil {
 		panic(err)
 	}
-	if theme.Bg1 != "#f5ebe1" {
+	if theme.Bg1 != whiteSand.Bg1 {
 		t.Errorf("Expected bg1 to be %s, got %s",
-			"#f5ebe1", theme.Bg1)
+			whiteSand.Bg1, theme.Bg1)
 	}
+	if theme.Fg1 != whiteSand.Fg1 {
+		t.Errorf("Expected fg1 to be %s, got %s",
+			whiteSand.Fg1, theme.Fg1)
+	}
+	if theme.Bg01 != whiteSand.Bg01 {
+		t.Errorf("expected bg01 to be %s, got %s",
+			whiteSand.Bg01, theme.Bg01)
+	}
+
 }
