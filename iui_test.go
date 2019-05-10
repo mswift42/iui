@@ -125,9 +125,9 @@ var whiteSand = ThemeMap{
 	Fg2:      "#656565",
 	Bg1:      "#f5ebe1",
 	Bg01:     "#f6ede4",
-	Bg2:      "#e1d8cf",
-	Bg3:      "#cec5bd",
-	Bg4:      "#bab3ab",
+	Bg2:      "#dfd6cd",
+	Bg3:      "#c9c1b9",
+	Bg4:      "#b4ada6",
 	Builtin:  "#1a8591",
 	Keyword:  "#4a858c",
 	Constant: "#697024",
@@ -203,6 +203,42 @@ func TestNewThemeMapFromJson(t *testing.T) {
 	if theme.Bg01 != whiteSand.Bg01 {
 		t.Errorf("expected bg01 to be %s, got %s",
 			whiteSand.Bg01, theme.Bg01)
+	}
+	if theme.Bg2 != whiteSand.Bg2 {
+		t.Errorf("Expected bg2 to be %s, got %s",
+			whiteSand.Bg2, theme.Bg2)
+	}
+	if theme.Bg3 != whiteSand.Bg3 {
+		t.Errorf("expected bg3 to be %s, got %s",
+			whiteSand.Bg3, theme.Bg3)
+	}
+	if theme.Bg4 != whiteSand.Bg4 {
+		t.Errorf("expected Bg4 to be %s, got %s",
+			whiteSand.Bg4, theme.Bg4)
+	}
+	if theme.Keyword != whiteSand.Keyword {
+		t.Errorf("expected keyword to be %s, got %s",
+			whiteSand.Keyword, theme.Keyword)
+	}
+	if theme.Builtin != whiteSand.Builtin {
+		t.Errorf("Expected builtin to be %s, got %s",
+			whiteSand.Builtin, theme.Builtin)
+	}
+	if theme.String != whiteSand.String {
+		t.Errorf("Expected string to be %s, got %s",
+			whiteSand.String, theme.String)
+	}
+	if theme.Type != whiteSand.Type {
+		t.Errorf("Expected type to be %s, got: %s",
+			whiteSand.Type, theme.Type)
+	}
+	if theme.Warning != whiteSand.Warning {
+		t.Errorf("Expected warning to be %s, got: %s",
+			whiteSand.Warning, theme.Warning)
+	}
+	if theme.Warning2 != whiteSand.Warning2 {
+		t.Errorf("Expected warning2 to be %s, got: %s",
+			whiteSand.Warning2, theme.Warning2)
 	}
 
 }
