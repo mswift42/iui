@@ -43,24 +43,22 @@ var whiteSand = ThemeMap{
 	Warning2: "#ff4d12",
 }
 
-var thursday = map[string]string{
-	"author":    "Martin Haesler",
-	"themename": "thursday",
-	"fg1":       "#2f2f2f",
-	"fg2":       "#404040",
-	"bg1":       "#f9fbfd",
-	"bg2":       "#e5e7e9",
-	"bg3":       "#d1d3d5",
-	"bg4":       "#bdbfc0",
-	"builtin":   "#636792",
-	"keyword":   "#28728f",
-	"const":     "#28766e",
-	"comment":   "#949494",
-	"func":      "#935c54",
-	"string":    "#8c5c79",
-	"type":      "#56724b",
-	"warning":   "#fa0c0c",
-	"warning2":  "#fa7b0c",
+var thursday = ThemeMap{
+	Fg1:      "#2f2f2f",
+	Fg2:      "#404040",
+	Bg1:      "#f9fbfd",
+	Bg2:      "#e5e7e9",
+	Bg3:      "#d1d3d5",
+	Bg4:      "#bdbfc0",
+	Builtin:  "#636792",
+	Keyword:  "#28728f",
+	Constant: "#28766e",
+	Comment:  "#949494",
+	Func:     "#935c54",
+	String:   "#8c5c79",
+	Type:     "#56724b",
+	Warning:  "#fa0c0c",
+	Warning2: "#fa7b0c",
 }
 
 func TestNewThemeMapFromJson(t *testing.T) {
