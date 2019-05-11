@@ -2,8 +2,62 @@ package main
 
 import (
 	"encoding/json"
+	"github.com/lucasb-eyer/go-colorful"
 	"testing"
 )
+
+var backgrounds = []struct {
+	bg       string
+	expected bool
+}{
+	{
+		"#000000",
+		true,
+	},
+	{
+		"#ffffff",
+		false,
+	},
+	{
+		"#112328",
+		true,
+	},
+	{
+		"#f5ebe1",
+		false,
+	},
+	{
+		"#f9fbfd",
+		false,
+	},
+	{
+		"#ece3db",
+		false,
+	},
+	{
+		"#455256",
+		true,
+	},
+	{
+		"#073642",
+		true,
+	},
+	{
+		"#eee8d5",
+		false,
+	},
+}
+
+func TestHasDarkBG(t *testing.T) {
+	for _, i := range backgrounds {
+		col, _ := colorful.Hex(i.bg)
+		darkbg := hasDarkBG(&col)
+		if darkbg != i.expected {
+			t.Errorf("Expected %v background to be %v, got %v",
+				col.Hex(), i.expected, darkbg)
+		}
+	}
+}
 
 var reykjavik = ThemeMap{
 	DarkBG:   true,
@@ -44,6 +98,7 @@ var whiteSand = ThemeMap{
 }
 
 var thursday = ThemeMap{
+	DarkBG:   false,
 	Fg1:      "#2f2f2f",
 	Fg2:      "#404040",
 	Bg1:      "#f9fbfd",
