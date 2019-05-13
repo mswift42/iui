@@ -48,6 +48,23 @@ var backgrounds = []struct {
 	},
 }
 
+var invcolors = []struct {
+	bg       string
+	col      string
+	expected string
+}{
+	{
+		reykjavik.Bg1,
+		reykjavik.Keyword,
+		"#0b242e",
+	},
+	{
+		whiteSand.Bg1,
+		whiteSand.Keyword,
+		"#e5f0f1",
+	},
+}
+
 func TestHasDarkBG(t *testing.T) {
 	for _, i := range backgrounds {
 		col, _ := colorful.Hex(i.bg)
@@ -55,6 +72,18 @@ func TestHasDarkBG(t *testing.T) {
 		if darkbg != i.expected {
 			t.Errorf("Expected %v background to be %v, got %v",
 				col.Hex(), i.expected, darkbg)
+		}
+	}
+}
+
+func TestInvertColor(t *testing.T) {
+	for _, i := range invcolors {
+		bgcol, _ := colorful.Hex(i.bg)
+		fgcol, _ := colorful.Hex(i.col)
+		inv := invertColor(&bgcol, &fgcol)
+		if i.expected != inv {
+			t.Errorf("expected inverted color of %v to be %v, got: %v",
+				i.col, i.expected, inv)
 		}
 	}
 }
