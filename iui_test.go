@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"encoding/xml"
 	"github.com/lucasb-eyer/go-colorful"
 	"testing"
 )
@@ -143,6 +144,67 @@ var thursday = ThemeMap{
 	Type:     "#56724b",
 	Warning:  "#fa0c0c",
 	Warning2: "#fa7b0c",
+}
+
+func TestNewThemeMap(t *testing.T) {
+	var td ThemeFile
+	bytes, err := loadFile("white-sand.xml")
+	if err != nil {
+		panic(err)
+	}
+	xml.Unmarshal(bytes, &td)
+	theme, err := newThemeMap(&td)
+	if err != nil {
+		t.Error("Expected error to be nil, got: ", err)
+	}
+	if theme.Bg1 != whiteSand.Bg1 {
+		t.Errorf("Expected bg1 to be %s, got %s",
+			whiteSand.Bg1, theme.Bg1)
+	}
+	if theme.Fg1 != whiteSand.Fg1 {
+		t.Errorf("Expected fg1 to be %s, got %s",
+			whiteSand.Fg1, theme.Fg1)
+	}
+	if theme.Bg01 != whiteSand.Bg01 {
+		t.Errorf("expected bg01 to be %s, got %s",
+			whiteSand.Bg01, theme.Bg01)
+	}
+	if theme.Bg2 != whiteSand.Bg2 {
+		t.Errorf("Expected bg2 to be %s, got %s",
+			whiteSand.Bg2, theme.Bg2)
+	}
+	if theme.Bg3 != whiteSand.Bg3 {
+		t.Errorf("expected bg3 to be %s, got %s",
+			whiteSand.Bg3, theme.Bg3)
+	}
+	if theme.Bg4 != whiteSand.Bg4 {
+		t.Errorf("expected Bg4 to be %s, got %s",
+			whiteSand.Bg4, theme.Bg4)
+	}
+	if theme.Keyword != whiteSand.Keyword {
+		t.Errorf("expected keyword to be %s, got %s",
+			whiteSand.Keyword, theme.Keyword)
+	}
+	if theme.Builtin != whiteSand.Builtin {
+		t.Errorf("Expected builtin to be %s, got %s",
+			whiteSand.Builtin, theme.Builtin)
+	}
+	if theme.String != whiteSand.String {
+		t.Errorf("Expected string to be %s, got %s",
+			whiteSand.String, theme.String)
+	}
+	if theme.Type != whiteSand.Type {
+		t.Errorf("Expected type to be %s, got: %s",
+			whiteSand.Type, theme.Type)
+	}
+	if theme.Warning != whiteSand.Warning {
+		t.Errorf("Expected warning to be %s, got: %s",
+			whiteSand.Warning, theme.Warning)
+	}
+	if theme.Warning2 != whiteSand.Warning2 {
+		t.Errorf("Expected warning2 to be %s, got: %s",
+			whiteSand.Warning2, theme.Warning2)
+	}
 }
 
 func TestNewThemeMapFromJson(t *testing.T) {
