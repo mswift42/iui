@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"encoding/xml"
 	"github.com/lucasb-eyer/go-colorful"
+	"io/ioutil"
+	"os"
 	"testing"
 )
 
@@ -146,6 +148,14 @@ var thursday = ThemeMap{
 	Warning2: "#fa7b0c",
 }
 
+func loadFile(fp string) ([]byte, error) {
+	file, err := os.Open(fp)
+	if err != nil {
+		return nil, err
+	}
+	return ioutil.ReadAll(file)
+}
+
 func TestNewThemeMap(t *testing.T) {
 	var td ThemeFile
 	bytes, err := loadFile("white-sand.xml")
@@ -153,7 +163,7 @@ func TestNewThemeMap(t *testing.T) {
 		panic(err)
 	}
 	xml.Unmarshal(bytes, &td)
-	theme, err := newThemeMap(&td)
+	theme, err := NewThemeMap(&td)
 	if err != nil {
 		t.Error("Expected error to be nil, got: ", err)
 	}
@@ -216,7 +226,7 @@ func TestNewThemeMapFromJson(t *testing.T) {
 	if err := json.Unmarshal(bytes, &jt); err != nil {
 		panic(err)
 	}
-	theme, err := newThemeMapFromJson(&jt)
+	theme, err := NewThemeMapFromJson(&jt)
 	if err != nil {
 		panic(err)
 	}
