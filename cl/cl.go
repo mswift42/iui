@@ -1,8 +1,19 @@
 package cl
 
 import (
+	"fmt"
 	"github.com/urfave/cli"
+	"io/ioutil"
+	"os"
 )
+
+func loadFile(fp string) ([]byte, error) {
+	file, err := os.Open(fp)
+	if err != nil {
+		return nil, err
+	}
+	return ioutil.ReadAll(file)
+}
 
 func InitCli() *cli.App {
 	app := cli.NewApp()
@@ -30,5 +41,18 @@ COPYRIGHT:
 VERSION:
    {{.Version}}
 `
+	app.Commands = []cli.Command{
+		{
+			Name:      "generate",
+			Aliases:   []string{"g", "gen", "generate"},
+			Usage:     "Generate ui theme from supplied editor theme or json color map.",
+			HelpName:  "generate",
+			ArgsUsage: "[theme/color map]",
+			Action: func(c *cli.Context) error {
+				fmt.Println(c.Args().Get(0))
+				return nil
+			},
+		},
+	}
 	return app
 }
