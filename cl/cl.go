@@ -41,6 +41,14 @@ COPYRIGHT:
 VERSION:
    {{.Version}}
 `
+	app.Flags = []cli.Flag{
+		cli.StringFlag{
+			Name:  "scheme, s",
+			Value: "xml",
+			Usage: "theme file to parse",
+		},
+	}
+
 	app.Commands = []cli.Command{
 		{
 			Name:      "generate",
