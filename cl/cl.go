@@ -42,10 +42,9 @@ VERSION:
    {{.Version}}
 `
 	app.Flags = []cli.Flag{
-		cli.StringFlag{
-			Name:  "scheme, s",
-			Value: "xml",
-			Usage: "theme file to parse",
+		cli.BoolFlag{
+			Name:  "json, j",
+			Usage: "Use if you are using the json template to generate a ui plugin.",
 		},
 	}
 
