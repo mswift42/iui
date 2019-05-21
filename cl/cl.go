@@ -2,9 +2,11 @@ package cl
 
 import (
 	"fmt"
-	"github.com/urfave/cli"
+	"github.com/mswift42/iui/ui"
 	"io/ioutil"
 	"os"
+
+	"github.com/urfave/cli"
 )
 
 func loadFile(fp string) ([]byte, error) {
@@ -41,13 +43,6 @@ COPYRIGHT:
 VERSION:
    {{.Version}}
 `
-	app.Flags = []cli.Flag{
-		cli.BoolFlag{
-			Name:  "json, j",
-			Usage: "Use if you are using the json template to generate a ui plugin.",
-		},
-	}
-
 	app.Commands = []cli.Command{
 		{
 			Name:      "generate",
@@ -55,10 +50,21 @@ VERSION:
 			Usage:     "Generate ui theme from supplied editor theme or json color map and a ui theme template.",
 			HelpName:  "generate",
 			ArgsUsage: "[theme/color map] [ui theme template]",
+			Flags: []cli.Flag{
+				cli.BoolFlag{
+					Name:  "json, j",
+					Usage: "Use if you are using the json template to generate a ui plugin.",
+				},
+			},
 			Action: func(c *cli.Context) error {
-				fmt.Println(c.Args().Get(0))
-				fmt.Println(c.Args().Get(1))
-				return nil
+				scheme := c.Args().Get(0)
+				templpath := c.Args().Get(1)
+				fmt.Println(scheme)
+				fmt.Println(templpath)
+				if c.Bool("json") {
+					return ui.GenerateThemeFromJson(scheme, templpath)
+				}
+				return ui.GenerateTheme(scheme, templpath)
 			},
 		},
 	}
