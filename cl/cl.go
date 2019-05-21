@@ -52,11 +52,12 @@ VERSION:
 		{
 			Name:      "generate",
 			Aliases:   []string{"g", "gen", "generate"},
-			Usage:     "Generate ui theme from supplied editor theme or json color map.",
+			Usage:     "Generate ui theme from supplied editor theme or json color map and a ui theme template.",
 			HelpName:  "generate",
-			ArgsUsage: "[theme/color map]",
+			ArgsUsage: "[theme/color map] [ui theme template]",
 			Action: func(c *cli.Context) error {
 				fmt.Println(c.Args().Get(0))
+				fmt.Println(c.Args().Get(1))
 				return nil
 			},
 		},
