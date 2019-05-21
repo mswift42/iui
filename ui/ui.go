@@ -82,14 +82,6 @@ func attrMap(attros []AttrOption) map[string]themeAttributes {
 	return tamap
 }
 
-func colMap(cm []ColorOptions) map[string]string {
-	cmap := make(map[string]string)
-	for _, i := range cm {
-		cmap[i.Name] = i.Value
-	}
-	return cmap
-}
-
 type ThemeMap struct {
 	DarkBG      bool
 	Fg1         string
