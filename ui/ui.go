@@ -222,6 +222,10 @@ func GenerateTheme(xmlpath, templpath string) error {
 	if err != nil {
 		return err
 	}
+	return saveTemplate(templpath, filename, &tm)
+}
+
+func saveTemplate(templpath string, filename string, tm *ThemeMap) error {
 	tmpl, err := template.ParseFiles(templpath)
 	if err != nil {
 		return err
@@ -231,4 +235,8 @@ func GenerateTheme(xmlpath, templpath string) error {
 		return err
 	}
 	return ioutil.WriteFile(filename, res.Bytes(), 0644)
+}
+
+func GenerateThemeFromJson(jsonpath, templath string) error {
+
 }
