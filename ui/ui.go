@@ -2,6 +2,7 @@ package ui
 
 import (
 	"bytes"
+	"encoding/json"
 	"encoding/xml"
 	"github.com/lucasb-eyer/go-colorful"
 	"html/template"
@@ -225,6 +226,23 @@ func GenerateTheme(xmlpath, templpath string) error {
 	return saveTemplate(templpath, filename, &tm)
 }
 
+func GenerateThemeFromJson(jsonpath, templath string) error {
+	bytes, err := loadFile(jsonpath)
+	if err != nil {
+		return err
+	}
+	var jtf JsonThemeFile
+	if err := json.Unmarshal(bytes, &jtf); err != nil {
+		return err
+	}
+	tm, err := NewThemeMapFromJson(&jtf)
+	if err != nil {
+		return err
+	}
+	filename := strings.TrimSuffix(jsonpath, filepath.Ext(jsonpath))
+	return saveTemplate(templath, filename, &tm)
+}
+
 func saveTemplate(templpath string, filename string, tm *ThemeMap) error {
 	tmpl, err := template.ParseFiles(templpath)
 	if err != nil {
@@ -235,8 +253,4 @@ func saveTemplate(templpath string, filename string, tm *ThemeMap) error {
 		return err
 	}
 	return ioutil.WriteFile(filename, res.Bytes(), 0644)
-}
-
-func GenerateThemeFromJson(jsonpath, templath string) error {
-
 }
