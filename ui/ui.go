@@ -1,10 +1,13 @@
 package ui
 
 import (
+	"bytes"
 	"encoding/xml"
 	"github.com/lucasb-eyer/go-colorful"
+	"html/template"
 	"io/ioutil"
 	"os"
+	"path/filepath"
 	"strings"
 )
 
@@ -209,14 +212,23 @@ func GenerateTheme(xmlpath, templpath string) error {
 	if err != nil {
 		return err
 	}
-	tmplbytes, err := loadFile(templpath)
-	if err != nil {
-		return err
-	}
 	var tf ThemeFile
 	if err := xml.Unmarshal(xmlbytes, &tf); err != nil {
 		return err
 	}
 	return nil
-
+	filename := strings.TrimSuffix(xmlpath, filepath.Ext(xmlpath))
+	tm, err := NewThemeMap(&tf)
+	if err != nil {
+		return err
+	}
+	tmpl, err := template.ParseFiles(templpath)
+	if err != nil {
+		return err
+	}
+	var res bytes.Buffer
+	if err := tmpl.Execute(&res, tm); err != nil {
+		return err
+	}
+	return ioutil.WriteFile(filename, res.Bytes(), 0644)
 }
