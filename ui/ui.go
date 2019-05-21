@@ -1,7 +1,10 @@
 package ui
 
 import (
+	"encoding/xml"
 	"github.com/lucasb-eyer/go-colorful"
+	"io/ioutil"
+	"os"
 	"strings"
 )
 
@@ -191,4 +194,29 @@ func NewThemeMapFromJson(file *JsonThemeFile) (ThemeMap, error) {
 	tm.Warning2 = file.Warning2
 	err := tm.addColors()
 	return tm, err
+}
+
+func loadFile(fp string) ([]byte, error) {
+	file, err := os.Open(fp)
+	if err != nil {
+		return nil, err
+	}
+	return ioutil.ReadAll(file)
+}
+
+func GenerateTheme(xmlpath, templpath string) error {
+	xmlbytes, err := loadFile(xmlpath)
+	if err != nil {
+		return err
+	}
+	tmplbytes, err := loadFile(templpath)
+	if err != nil {
+		return err
+	}
+	var tf ThemeFile
+	if err := xml.Unmarshal(xmlbytes, &tf); err != nil {
+		return err
+	}
+	return nil
+
 }
