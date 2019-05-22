@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"encoding/xml"
-	"fmt"
 	"github.com/lucasb-eyer/go-colorful"
 	"html/template"
 	"io/ioutil"
@@ -223,7 +222,6 @@ func GenerateTheme(xmlpath, templpath string) error {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(filename)
 	return saveTemplate(templpath, filename, &tm)
 }
 
@@ -241,7 +239,6 @@ func GenerateThemeFromJson(jsonpath, templath string) error {
 		return err
 	}
 	filename := strings.TrimSuffix(jsonpath, filepath.Ext(jsonpath))
-	fmt.Println(filename)
 	return saveTemplate(templath, filename, &tm)
 }
 
@@ -254,6 +251,5 @@ func saveTemplate(templpath string, filename string, tm *ThemeMap) error {
 	if err := tmpl.Execute(&res, tm); err != nil {
 		return err
 	}
-	fmt.Println(filename)
-	return ioutil.WriteFile(filename, res.Bytes(), 0644)
+	return ioutil.WriteFile(filename+".theme.json", res.Bytes(), 0644)
 }
