@@ -58,7 +58,7 @@
       "matchSelectionForeground": {{if .DarkBG}}"#ffffff"{{else}}"#000000"{{end}},
       "nonFocusedState": "{{.Bg2}}",
       "selectionInactiveBackground": "{{.Bg2}}",
-      "selectionInfoForeground": "{{if .DarkBG}}"#eaeaea"{{else}}"#202020"{{end}},
+      "selectionInfoForeground": {{if .DarkBG}}"#eaeaea"{{else}}"#202020"{{end}},
       "selectionInactiveInfoForeground": "{{.String}}"
     },
     "Component": {
