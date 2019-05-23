@@ -1,7 +1,6 @@
 package cl
 
 import (
-	"fmt"
 	"github.com/mswift42/iui/ui"
 	"io/ioutil"
 	"os"
@@ -57,14 +56,17 @@ VERSION:
 				},
 			},
 			Action: func(c *cli.Context) error {
+				if len(c.Args()) < 2 {
+					return cli.NewExitError("Generate Format is <theme scheme> <ui template", 1)
+				}
 				scheme := c.Args().Get(0)
 				templpath := c.Args().Get(1)
-				fmt.Println(scheme)
-				fmt.Println(templpath)
 				if c.Bool("json") {
 					return ui.GenerateThemeFromJson(scheme, templpath)
+				} else {
+					return ui.GenerateTheme(scheme, templpath)
 				}
-				return ui.GenerateTheme(scheme, templpath)
+				return nil
 			},
 		},
 	}
