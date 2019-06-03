@@ -16,4 +16,15 @@ Create custom ui theme folder by following [these instructions](https://www.jetb
 If you have alreadey an IntelliJ Editor Theme in format of <themename>.icls or <themename>.xml you can generate
 the ui theme with 
 
-`iui generate <path to editor theme> <path to ui template>`
+If you do not have an editor theme, you can create one with [themecreator](https://mswift42.github.com/themecreator).
+
+Then you can generate the ui theme with
+
+`iui generate <path to editor theme> <path to ui template>`.
+
+
+Else you'll have to download the [ThemeColors Json File](https://github.com/mswift42/iui/blob/master/ThemeColors.json) and customize it with your colors,
+and generate the ui theme with
+
+`iui generate --json <theme colors>.json <path to ui template>`.
+
