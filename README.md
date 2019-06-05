@@ -4,10 +4,7 @@ Create [IntelliJ](https://www.jetbrains.com/idea/) [ui themes](https://blog.jetb
 
 # Install
 
-` go get -u github.com/mswift42/iui`
-
-Download ui theme text template from [here](https://github.com/mswift42/iui/blob/master/templ.txt).
-
+Go to [releases](https://github.com/mswift42/iui/releases), download your zip archive and extract it.
 
 # Usage
 
@@ -20,11 +17,14 @@ If you do not have an editor theme, you can create one with [themecreator](https
 
 Then you can generate the ui theme with
 
-`iui generate <path to editor theme> <path to ui template>`.
+`iui generate <path to editor theme> templ.txt`.
 
 
-Else you'll have to download the [ThemeColors Json File](https://github.com/mswift42/iui/blob/master/ThemeColors.json) and customize it with your colors,
-and generate the ui theme with
+Else you will have to customize the ThemeColors.json file with your colors, and generate the ui theme with
 
-`iui generate --json <theme colors>.json <path to ui template>`.
+`iui generate --json ThemeColors.json templ.txt`.
+
+
+Replace the <theme name>.theme.json file in custom ui theme folder with your generated file, make sure to fill
+out the author field, press the run button and admire your new theme.
 
