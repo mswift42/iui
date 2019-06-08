@@ -10,7 +10,7 @@
       "inactiveBackground": "{{.Bg2}}",
       "disabledBackground": "{{.Bg2}}",
       "selectionBackground": "{{.Keyword}}",
-      "selectionForeground": {{if .DarkBG}}"#000000"{{else}}"#ffffff"{{end}}
+      "selectionForeground": {{if .DarkBG}}"#000000"{{else}}"#ffffff"{{end}},
       "selectionInactiveBackground": "{{.Bg2}}",
       "acceleratorForeground": "{{.Fg1}}",
       "acceleratorSelectionForeground": "{{.Fg1}}",
