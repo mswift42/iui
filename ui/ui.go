@@ -89,6 +89,11 @@ func attrMap(attros []AttrOption) map[string]themeAttributes {
 	return tamap
 }
 
+// ThemeMap represents all colors of an ui theme.
+// It holds the theme's background color and darker / lighter
+// shades thereof, foregroundcolors in varying shades and colors,
+// and a boolean that is set to true if the background color counts
+// as "dark".
 type ThemeMap struct {
 	DarkBG      bool
 	Fg1         string
