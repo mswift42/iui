@@ -10,12 +10,10 @@ Go to [releases](https://github.com/mswift42/iui/releases), download your zip ar
 
 Create custom ui theme folder by following [these instructions](https://www.jetbrains.org/intellij/sdk/docs/reference_guide/ui_themes/themes.html).
 
-If you have alreadey an IntelliJ Editor Theme in format of <themename>.icls or <themename>.xml you can generate
-the ui theme with 
 
 If you do not have an editor theme, you can create one with [themecreator](https://mswift42.github.com/themecreator).
 
-Then you can generate the ui theme with
+Generate the ui theme with
 
 `iui generate <path to editor theme> templ.txt`.
 
