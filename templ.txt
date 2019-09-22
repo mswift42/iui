@@ -262,7 +262,7 @@
     },
     "TableHeader.cellBorder": "8,0,8,0",
     "Table": {
-      "stripeColor": "{{.InvWarning}}",
+      "stripeColor": "{{.Bg4}}",
       "lightSelectionForeground": "{{.Fg1}}",
       "lightSelectionInactiveForeground": "{{.Fg1}}",
       "lightSelectionBackground": "{{.Bg2}}",
