@@ -3,10 +3,9 @@ package ui
 import (
 	"encoding/json"
 	"encoding/xml"
-	"github.com/lucasb-eyer/go-colorful"
-	"io/ioutil"
-	"os"
 	"testing"
+
+	"github.com/lucasb-eyer/go-colorful"
 )
 
 var backgrounds = []struct {
@@ -146,14 +145,6 @@ var thursday = ThemeMap{
 	Type:     "#56724b",
 	Warning:  "#fa0c0c",
 	Warning2: "#fa7b0c",
-}
-
-func loadFile(fp string) ([]byte, error) {
-	file, err := os.Open(fp)
-	if err != nil {
-		return nil, err
-	}
-	return ioutil.ReadAll(file)
 }
 
 func TestNewThemeMap(t *testing.T) {
