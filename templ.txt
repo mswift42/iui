@@ -55,12 +55,10 @@
     },
     "ComboPopup.border": "1,1,1,1,{{.Bg2}}",
     "CompletionPopup": {
-      "matchForeground": "{{.Keyword}}",
-      "matchSelectionForeground": {{if .DarkBG}}"#ffffff"{{else}}"#000000"{{end}},
-      "nonFocusedState": "{{.Bg2}}",
+      "matchForeground": {{if .DarkBG}}"#ffffff{{else}}"#000000"{{end}},
+      "nonFocusedMask": {{.Keyword}}40,
       "selectionInactiveBackground": "{{.Bg2}}",
-      "selectionInfoForeground": {{if .DarkBG}}"#eaeaea"{{else}}"#202020"{{end}},
-      "selectionInactiveInfoForeground": "{{.String}}"
+      "selectedBackground": {{.Keyword}}40
     },
     "Component": {
       "errorFocusColor": "{{.InvWarning}}",
