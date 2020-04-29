@@ -55,10 +55,10 @@
     },
     "ComboPopup.border": "1,1,1,1,{{.Bg2}}",
     "CompletionPopup": {
-      "matchForeground": {{if .DarkBG}}"#ffffff{{else}}"#000000"{{end}},
-      "nonFocusedMask": {{.Keyword}}40,
+      "matchForeground": {{if .DarkBG}}"#ffffff"{{else}}"#000000"{{end}},
+      "nonFocusedMask": "{{.Keyword}}40",
       "selectionInactiveBackground": "{{.Bg2}}",
-      "selectedBackground": {{.Keyword}}40
+      "selectedBackground": "{{.Keyword}}40"
     },
     "Component": {
       "errorFocusColor": "{{.InvWarning}}",
